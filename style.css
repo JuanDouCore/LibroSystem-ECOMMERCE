@@ -1,0 +1,157 @@
+/*LOGIN REGISTRER CUENTA CARRITO ADMIN EMPLEADO
+
+register <span class="material-symbols-outlined">
+how_to_reg
+</span>
+
+login <span class="material-symbols-outlined">
+login
+</span>entrada
+<span class="material-symbols-outlined">
+logout
+</span>salida
+
+cuenta <span class="material-symbols-outlined">
+account_circle
+</span>
+
+carrito <span class="material-symbols-outlined">
+shopping_cart
+</span>
+
+admin <span class="material-symbols-outlined">
+admin_panel_settings
+</span>
+
+emleado
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-style:arial;
+}
+button{
+    background: transparent;
+    border-color: aqua;
+}
+
+header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aqua;
+}
+
+.navBar{
+    padding-right: 20px;
+}
+.navBar ul{
+    text-decoration: none;
+    list-style: none;
+}
+.navBar ul li{
+    display: inline;
+    padding: 25px;
+
+}
+.divFlexLibros{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+.divLibros{
+    background-color: aqua;
+    height: 150px;
+    width: 170px; 
+    margin: 20px;
+}
+.tituloLibros{
+    font-size: 70px;
+    text-align: center;
+}
+
+.tituloLibro{
+    text-align: center;
+}
+.divImgLibro{
+}
+.descripcionLibro{
+    text-align: center;
+}
+.precioLibro{
+    text-align: center;
+}
+.botonFlex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#seccionLibros{
+   background-color: aliceblue;
+   height: 100%;
+   border-bottom: 1px grey solid;
+   border-right:5px grey solid ;
+}
+
+
+
+footer{
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+}
+
+/* estilos para los modales de login-register */
+.login{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0 ,0 ,0 ,0.5);
+}
+.login-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 10%;
+}
+.loginForm{
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.register{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0 ,0 ,0 ,0.5);
+}
+.register-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 10%;
+}
+.registerForm{
+    display: flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
