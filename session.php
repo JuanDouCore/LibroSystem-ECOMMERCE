@@ -17,6 +17,15 @@ if(isset($_POST['login'])) {
     //logica que verifica el inicio de sesión
     if($user === "bla") {
         $_SESSION['loggedin'] = true;
+
+        //cargamos la id del usuario en la sesion
+        $_SESSION['userLogged'] = 123;
+        
+        //verificamos si es admin
+        if(1===1) $_SESSION['isAdmin'] = true;
+        //verificamos si es empleado
+        if(1===2) $_SESSION['isEmpleoye'] = true;
+
     } else {
         $_SESSION['errorLogin'] = "Usuario o contraseña incorrecto, verifique";
     }

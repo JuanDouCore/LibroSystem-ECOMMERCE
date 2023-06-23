@@ -9,52 +9,74 @@
     <title>Document</title>
 </head>
 <body>
+    <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     <header>
         <div class="divTit">
             <h1 class="titPrincipal">Books system</h1>
         </div>
         <nav class="navBar">
             <ul>
-                <li>
-                    <button onclick="openModalRegister()"><p>Registrarse</p> <span class="material-symbols-outlined">
-                    how_to_reg
-                    </span>
+
+            <?php 
+            session_start();
+
+            if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+                echo '
+                <li><button onclick="redirigir(\'/librosystem/mi_account.php\')"><p>Mi cuenta</p>
+                    <span class="material-symbols-outlined">
+                        account_circle
+                        </span>
+                </button></li>
+                ';
+
+                echo '
+                <li><button onclick="redirigir(\'/librosystem/carrito.php\')"><p>Carrito</p>
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                        </span>
+
+                </button></li>
+                ';
+
+                if(isset($_SESSION['isAdmin'])) {
+                    echo '
+                    <li>
+                    <button onclick="redirigir(\'/librosystem/admin.php\')"> <p>Administrador</p>
+                        <span class="material-symbols-outlined">
+                            admin_panel_settings
+                            </span>
                     </button>
-                </li>
-                
+                    </li>                  
+                    ';
+                }
+
+                echo '
+                <li><button onclick="redirigir(\'/librosystem/session.php?logout=\')"><p>Cerrar Sesion</p>
+                    <span class="material-symbols-outlined">
+                        logout
+                        </span>
+                </button></li>
+                ';
+
+            } else {
+                echo '<li>';
+                echo '<button onclick="openModalRegister()"><p>Registrarse</p> <span class="material-symbols-outlined">';
+                echo 'how_to_reg';
+                echo '</span>';
+                echo '</button>';
+                echo '</li>';
+
+                echo '
                 <li>
                     <button onclick="openModalLogin()"><p>Iniciar Sesion</p>
                     <span class="material-symbols-outlined">
                         login
                 </button>
                 </li>
-                <li><button onclick="redirigir('/librosystem/session.php?logout=')"><p>Cerrar Sesion</p>
-                    <span class="material-symbols-outlined">
-                        logout
-                        </span>
-                </button></li>
-
+                ';
+            }
+            ?>
   
-
-                <li><button onclick="redirigir('/librosystem/mi_account.php')"><p>Mi cuenta</p>
-                    <span class="material-symbols-outlined">
-                        account_circle
-                        </span>
-                </button></li>
-                <li><button onclick="redirigir('/librosystem/carrito.php')"><p>Carrito</p>
-                    <span class="material-symbols-outlined">
-                        shopping_cart
-                        </span>
-
-                </button></li>
-
-                <li>
-                    <button onclick="redirigir('/librosystem/admin.php')"> <p>Administrador</p>
-                        <span class="material-symbols-outlined">
-                            admin_panel_settings
-                            </span>
-                    </button>
-                </li>    
             </ul>
         </nav>
     </header>
@@ -101,6 +123,8 @@
                 <button onclick="closeModalRegister()">Salir</button>
         </div>
     </div>
+    <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
+
 
 
 
