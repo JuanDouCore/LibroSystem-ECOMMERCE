@@ -50,6 +50,16 @@
                     ';
                 }
 
+                if(isset($_SESSION['isAdmin']) || isset($_SESSION['isEmpleoye'])) {
+                    echo '
+                    <li><button onclick="redirigir(\'/librosystem/ventas.php\')"><p>Ventas</p>
+                    <span class="material-symbols-outlined">
+                    sell
+                    </span>
+                    </button></li>
+                    ';
+                }
+
                 echo '
                 <li><button onclick="redirigir(\'/librosystem/session.php?logout=\')"><p>Cerrar Sesion</p>
                     <span class="material-symbols-outlined">
@@ -76,8 +86,15 @@
                 ';
             }
             ?>
-  
+
+
             </ul>
+            <?php 
+                if(isset($_SESSION['errorLogin'])) {
+                    echo '<p style="color:red;">'.$_SESSION['errorLogin'].'</p>';
+                    unset($_SESSION['errorLogin']);
+                }
+            ?>
         </nav>
     </header>
 
