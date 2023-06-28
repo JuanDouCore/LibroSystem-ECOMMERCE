@@ -1,5 +1,6 @@
 <?php 
 
+require_once 'database/database.php';
 session_start();
 
 if(isset($_REQUEST['logout'])) {
@@ -15,16 +16,16 @@ if(isset($_POST['login'])) {
     $password = $_POST['password'];
 
     //logica que verifica el inicio de sesión
-    if($user === "bla") {
+    if(database::validateUserLogin($user, $password)) {
         $_SESSION['loggedin'] = true;
 
         //cargamos la id del usuario en la sesion
-        $_SESSION['userLogged'] = 123;
+        $_SESSION['userLogged'] = database::getUserId($user);
         
         //verificamos si es admin
-        if(1===1) $_SESSION['isAdmin'] = true;
+        if(database::checkIfAdmin($user)) $_SESSION['isAdmin'] = true;
         //verificamos si es empleado
-        if(1===2) $_SESSION['isEmpleoye'] = true;
+        if(database::checkIfEmpleoye($user)) $_SESSION['isEmpleoye'] = true;
 
     } else {
         $_SESSION['errorLogin'] = "Usuario o contraseña incorrecto, verifique";
@@ -41,8 +42,11 @@ if(isset($_POST['register'])) {
     $dni = $_POST['DNI'];
 
     //logica para verificar si existe alguien con dichos datos
-    if(true) {
-        //logica para crear el usuario
+    if(!database::checkUserExistForRegister($user, $name, $dni)) {
+        
+        database::registerUser($user, $password, $name, $dni, 1);
+
+        $_SESSION['userLogged'] = database::getUserId($user);
 
         $_SESSION['loggedin'] = true;
     } else {

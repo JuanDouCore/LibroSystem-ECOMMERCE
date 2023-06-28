@@ -117,6 +117,7 @@
         </div>
     </div>
 	
+    
 	<div id="register" class="register">
         <div class="register-content">
 			<form class="registerForm" method="post" action="session.php">
