@@ -7,10 +7,10 @@
 
 class database {
 
-    private static $host = "localhost";
-    private static $user = "root";
-    private static $password = "";
-    private static $database = "test";
+    private static $host = "db4free.net";
+    private static $user = "librosystem_user";
+    private static $password = "hola12345";
+    private static $database = "librosystem";
     
     //gestion de la conexion sql
     private static function getConnection() {
