@@ -1,8 +1,9 @@
 <?php 
 
-require_once '../models/Libro.php';
-require_once '../models/Venta.php';
-require_once '../models/Libro_Vendido.php';
+    require_once '/xampp/htdocs/librosystem/models/Venta.php';
+    require_once '/xampp/htdocs/librosystem/models/Libro.php';
+    require_once '/xampp/htdocs/librosystem/models/Libro_Vendido.php';
+
 
 class database {
 
