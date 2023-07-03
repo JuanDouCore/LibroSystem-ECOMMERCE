@@ -10,8 +10,9 @@ class Libro {
     private $categoria;
     private $stock;
     private $vendidos;
+    private $precio;
 
-    public function __construct($id = null, $titulo, $autor, $descripicion, $referencia_imagen, $fecha_publicacion, $categoria, $stock, $vendidos) {
+    public function __construct($id = null, $titulo, $autor, $descripicion, $referencia_imagen, $fecha_publicacion, $categoria, $stock, $vendidos, $precio){
         $this->id=$id;
         $this->titulo = $titulo;
         $this->autor = $autor;
@@ -21,6 +22,7 @@ class Libro {
         $this->categoria = $categoria;
         $this->stock = $stock;
         $this->vendidos = $vendidos;
+        $this->precio = $precio;
     }
 
     public function getId() {
@@ -83,6 +85,12 @@ class Libro {
         $this->vendidos=$vendidos;
     }
 
+    public function getPrecio() {
+        return $this->precio;
+    }
+    public function setPrecio($precio) {
+        $this->precio=$precio;
+    }
 
 
 }
