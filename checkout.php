@@ -30,7 +30,7 @@
                 ';
 
                 echo '
-                <li><button onclick="redirigir(\'/librosystem/carrito.php\')"><p>Carrito</p>
+                <li><button onclick="redirigir(\'/librosystem/checkout.php\')"><p>Carrito</p>
                     <span class="material-symbols-outlined">
                         shopping_cart
                         </span>
@@ -145,6 +145,8 @@
 
     <section>
         <article class="ArticlePrincipalCheckout">
+        <p>Libros en el carrito</p>
+        <br>
         
         <div class="divLibroCheckOut">
         
@@ -239,13 +241,16 @@
 
 
     <section class="seccionInfoEnvio">
-        <label for="metodoEnvio">Metodo envio</label>
-        <select id="optionValue" onchange="changeMetodoEnvio()">
-            <option value="retiroLocal">Retiro en el local</option>
-            <option value="aDomicilio">Envio a domicilio</option>
-        </select>
+    <br><br>
+        <div class="opcionMetodoEntrega">
+            <label for="metodoEnvio">Metodo entrega</label>
+            <select id="optionValue" onchange="changeMetodoEnvio()">
+                <option value="retiroLocal">Retiro en el local</option>
+                <option value="aDomicilio">Envio a domicilio</option>
+            </select>
+        </div>
 
-        <form id="compraConEnvio" class="datosDeEnvioForm">
+        <form id="datosDeEnvioForm" class="datosDeEnvioForm" method="post" action="/controllers/sellController.php">
                 Calle <br>
                 <input type="text">
                 <br>Altura <br>
@@ -274,7 +279,7 @@
                 <input type="submit" name="procesarCompra_Envio" value="CONFIRMAR">
         </form>
 
-        <form id="compraConRetiro" class="datosDeCompraForm">
+        <form id="datosDeCompraForm" class="datosDeCompraForm" method="post" action="/controllers/sellController.php">
                 <br>
                 Metodo de pago
                 <label>
@@ -293,9 +298,11 @@
 
                 <input type="submit" name="procesarCompra_Retiro" value="CONFIRMAR">
         </form>
+        <br><br>
     </section>
     
 
+    <br><br>
     <footer>Derechos reservados BookStytem ®</footer>
 
     <script src="script.js"></script>

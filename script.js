@@ -19,12 +19,13 @@ function changeMetodoEnvio() {
     var formEnvio = document.getElementById("datosDeEnvioForm");
     var formRetiro = document.getElementById("datosDeCompraForm");
 
+
     if (select.value === "aDomicilio") {
         formRetiro.style.display = "none";
-        formEnvio.style.display = "block";
+        formEnvio.style.display = "flex";
     } else {
       formEnvio.style.display = "none";
-      formRetiro.style.display = "block";
+      formRetiro.style.display = "flex";
     }
   }
   

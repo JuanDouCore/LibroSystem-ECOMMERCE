@@ -30,7 +30,7 @@
                 ';
 
                 echo '
-                <li><button onclick="redirigir(\'/librosystem/carrito.php\')"><p>Carrito</p>
+                <li><button onclick="redirigir(\'/librosystem/checkout.php\')"><p>Carrito</p>
                     <span class="material-symbols-outlined">
                         shopping_cart
                         </span>
