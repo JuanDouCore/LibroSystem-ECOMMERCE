@@ -12,6 +12,12 @@ if(isset($_REQUEST['logout'])) {
 }
 
 if(isset($_POST['login'])) {
+    if($_POST['user'] === "" || $_POST['password'] === "") {
+        $_SESSION['errorLogin'] = "Por favor complete todos los campos";
+        header("Location: index.php");
+        exit();
+    }
+
     $user = $_POST['user'];
     $password = $_POST['password'];
 
@@ -36,6 +42,13 @@ if(isset($_POST['login'])) {
 }
 
 if(isset($_POST['register'])) {
+    if($_POST['user'] === "" ||$_POST['name'] === ""||$_POST['password'] === ""||$_POST['DNI'] === "") {
+        $_SESSION['errorLogin'] = "Por favor complete todos los campos";
+        header("Location: index.php");
+        exit();
+    }
+
+
     $user = $_POST['user'];
     $name = $_POST['name'];
     $password = $_POST['password'];

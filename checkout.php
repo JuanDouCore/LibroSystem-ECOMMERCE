@@ -154,7 +154,7 @@
             <img src="https://todoaudiolibros.com/usd/wp-content/uploads/2022/02/MOBY-DICK.jpg" alt="mobyDick foto" >
         </div>
         <div>
-            <p>Titulo</p>
+            <p>El Señor de los Anillos asd asdasdasd as</p>
         </div>
        
         <div>

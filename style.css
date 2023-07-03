@@ -29,7 +29,7 @@ emleado
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-style:arial;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 button{
     background: transparent;
@@ -65,7 +65,7 @@ header{
 }
 .divLibros{
     background-color: aqua;
-    height: 150px;
+    height: 325px;
     width: 170px; 
     margin: 20px;
 }
@@ -78,6 +78,18 @@ header{
     text-align: center;
 }
 .divImgLibro{
+
+    width: 100%;
+    height: 55%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.divImgLibro img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .descripcionLibro{
     text-align: center;
@@ -100,9 +112,10 @@ header{
 
 
 footer{
+  background-color: aqua;
   bottom: 0;
   width: 100%;
-  height: 20px;
+  height: 100%;
   text-align: center;
 }
 
@@ -168,7 +181,7 @@ footer{
 .divFoto img{
     width: 100%;
     height: 300px;
-    object-fit: cover;
+    object-fit: contain;
     padding: 10px;
 
  
@@ -208,12 +221,12 @@ footer{
 }
 
 .divFotoCheckOut {
-    width: 6%;
+    width: 8%;
 }
 .divFotoCheckOut img{
     width: 100%;
     height: 100px;
-    object-fit: cover;
+    object-fit: contain;
     padding: 3px;
 }
 

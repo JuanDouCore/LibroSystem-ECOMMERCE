@@ -98,7 +98,7 @@ class database {
 
     //consultas para libros
     public static function cargarLibro($libro) {
-        self::sendQuery("insert into libros (titulo, autor, descripcion, imagen_serializada, fecha_publicacion, categoria, stock, vendidos)
+        self::sendQuery("insert into libros (titulo, autor, descripcion, referencia_imagen, fecha_publicacion, categoria, stock, vendidos)
         values ('" . $libro->getTitulo() . "','"
          . $libro->getAutor() . "','"
           . $libro->getDescripcion() . "','"
@@ -122,7 +122,7 @@ class database {
                 $lectura['titulo'],
                 $lectura['autor'],
                 $lectura['descripcion'],
-                $lectura['imagen_serializada'],
+                $lectura['referencia_imagen'],
                 $lectura['fecha_publicacion'],
                 $lectura['categoria'],
                 $lectura['stock'],
@@ -143,7 +143,7 @@ class database {
                 $lectura['titulo'],
                 $lectura['autor'],
                 $lectura['descripcion'],
-                $lectura['imagen_serializada'],
+                $lectura['referencia_imagen'],
                 $lectura['fecha_publicacion'],
                 $lectura['categoria'],
                 $lectura['stock'],
@@ -168,7 +168,7 @@ class database {
                     $lectura['titulo'],
                     $lectura['autor'],
                     $lectura['descripcion'],
-                    $lectura['imagen_serializada'],
+                    $lectura['referencia_imagen'],
                     $lectura['fecha_publicacion'],
                     $lectura['categoria'],
                     $lectura['stock'],
@@ -186,7 +186,7 @@ class database {
                     $lectura['titulo'],
                     $lectura['autor'],
                     $lectura['descripcion'],
-                    $lectura['imagen_serializada'],
+                    $lectura['referencia_imagen'],
                     $lectura['fecha_publicacion'],
                     $lectura['categoria'],
                     $lectura['stock'],
@@ -202,7 +202,7 @@ class database {
     public static function modificarLibro($libro) {
         self::sendQuery("UPDATE libros SET titulo='" . $libro->getTitulo() . "', autor='"
          . $libro->getAutor() . "', descripcion='"
-          . $libro->getDescripcion() . "', imagen_serializada='"
+          . $libro->getDescripcion() . "', referencia_imagen='"
            . $libro->getImagenSer() . "', fecha_publicacion='" 
              . $libro->getFechaPublicacion() . "', categoria='"
                 . $libro->getCategoria() . "', stock="

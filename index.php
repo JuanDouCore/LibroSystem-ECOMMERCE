@@ -154,8 +154,9 @@
         <div class="divFlexLibros">
         
             <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
+                <p class="tituloLibro">El Señor de leeos Anillos</p>
+                <br>
+                <div class="divImgLibro"><img src="/librosystem/images/libro_muestra.jpg" alt="imagenLibros"></div>
                 <br>
                 <p class="precioLibro">$100</p>
                 <div class="botonFlex">
@@ -170,7 +171,8 @@
 
             <div class="divLibros">
                 <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
+                <br>
+                <div class="divImgLibro"><img src="/librosystem/images/descarga.jpg" alt="imagenLibros"></div>
                 <br>
                 <p class="precioLibro">$100</p>
                 <div class="botonFlex">

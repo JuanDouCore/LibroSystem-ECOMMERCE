@@ -5,18 +5,18 @@ class Libro {
     private $titulo;
     private $autor;
     private $descripcion;
-    private $imagen_serializada;
+    private $referencia_imagen;
     private $fecha_publicacion;
     private $categoria;
     private $stock;
     private $vendidos;
 
-    public function __construct($id = null, $titulo, $autor, $descripicion, $imagen_serializada, $fecha_publicacion, $categoria, $stock, $vendidos) {
+    public function __construct($id = null, $titulo, $autor, $descripicion, $referencia_imagen, $fecha_publicacion, $categoria, $stock, $vendidos) {
         $this->id=$id;
         $this->titulo = $titulo;
         $this->autor = $autor;
         $this->descripcion = $descripicion;
-        $this->imagen_serializada = $imagen_serializada;
+        $this->referencia_imagen = $referencia_imagen;
         $this->fecha_publicacion = $fecha_publicacion;
         $this->categoria = $categoria;
         $this->stock = $stock;
@@ -48,11 +48,11 @@ class Libro {
         $this->descripcion=$descripcion;
     }
 
-    public function getImagenSer() {
-        return $this->imagen_serializada;
+    public function getImagenRuta() {
+        return $this->referencia_imagen;
     }
-    public function setImagenSer($imagen_serializada) {
-        $this->imagen_serializada=$imagen_serializada;
+    public function setImagenRuta($referencia_imagen) {
+        $this->referencia_imagen=$referencia_imagen;
     } 
 
     public function getFechaPublicacion() {

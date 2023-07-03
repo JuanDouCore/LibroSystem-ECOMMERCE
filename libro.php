@@ -145,9 +145,9 @@
 
     <section id="seccionLibrosDescripcion">
         <article class="flexInfoLibro">
-            <div class="divFoto"><img src="https://todoaudiolibros.com/usd/wp-content/uploads/2022/02/MOBY-DICK.jpg" alt="mobyDick foto" ></div>
+            <div class="divFoto"><img src="./images/libro_muestra.jpg" alt="mobyDick foto" ></div>
             <div class="divInfo">
-                <h2>TITULO LIBRO</h2>
+                <h2>El Señor de los Anillos asd eras</h2>
                 <p>Genero</p>
                 <br><br>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius explicabo, maxime laboriosam iure distinctio sapiente debitis iusto accusamus consectetur quisquam! Magni quam provident blanditiis quae vel placeat eum, dicta quasi!</p>
@@ -156,19 +156,20 @@
                 <p>Fecha release</p>
                 <br><br>
                     <form action="sellController.php" method="post">
-                        <input type="number" name="Cantidad" min="1" value="1"> 
+                        <input type="number" name="cantidad" min="1" value="1"> 
                         <input type="hidden" name="libro" value="1">
                         <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Agregar al carrito">
+                            <input id="agregarCarrito" name="agregarCarrito" type="submit" value="Agregar al carrito">
                         </label>
                     </form>
+                    <p style="color: red;">No hay unidades en stock</p>
             </div>
         </article>
         
     </section>
     
 
-
+    <br><br>
     <footer>Derechos reservados BookStytem ®</footer>
 
     <script src="script.js"></script>
