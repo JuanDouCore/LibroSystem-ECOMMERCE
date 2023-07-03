@@ -13,3 +13,18 @@ function closeModalRegister() {
 function redirigir(pagina) {
     window.location.href = pagina;
 }
+
+function changeMetodoEnvio() {
+    var select = document.getElementById("optionValue");
+    var formEnvio = document.getElementById("datosDeEnvioForm");
+    var formRetiro = document.getElementById("datosDeCompraForm");
+
+    if (select.value === "aDomicilio") {
+        formRetiro.style.display = "none";
+        formEnvio.style.display = "block";
+    } else {
+      formEnvio.style.display = "none";
+      formRetiro.style.display = "block";
+    }
+  }
+  

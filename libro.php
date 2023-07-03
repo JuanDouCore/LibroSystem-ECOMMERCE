@@ -143,128 +143,32 @@
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
 
-
-
-
-    <!--SECCION DE CATEGORIAS-LIBROS-->
-
-    <section id="seccionLibros">
-        <p class="tituloLibros">Terror</p>
-        
-        <div class="divFlexLibros">
-        
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
+    <section id="seccionLibrosDescripcion">
+        <article class="flexInfoLibro">
+            <div class="divFoto"><img src="https://todoaudiolibros.com/usd/wp-content/uploads/2022/02/MOBY-DICK.jpg" alt="mobyDick foto" ></div>
+            <div class="divInfo">
+                <h2>TITULO LIBRO</h2>
+                <p>Genero</p>
+                <br><br>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius explicabo, maxime laboriosam iure distinctio sapiente debitis iusto accusamus consectetur quisquam! Magni quam provident blanditiis quae vel placeat eum, dicta quasi!</p>
                 <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
+                <p>Autor.</p>
+                <p>Fecha release</p>
+                <br><br>
+                    <form action="sellController.php" method="post">
+                        <input type="number" name="Cantidad" min="1" value="1"> 
                         <input type="hidden" name="libro" value="1">
                         <label for="btnLibro">
-                            <input id="asd" type="submit" value="Ver libro">
+                            <input id="btnLibro" type="submit" value="Agregar al carrito">
                         </label>
                     </form>
-                </div>
             </div>
-
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-        </div>
+        </article>
+        
     </section>
-
-
-    <section id="seccionLibros">
-        <p class="tituloLibros">Comedia</p>
-        
-        <div class="divFlexLibros">
-        
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section id="seccionLibros">
-        <p class="tituloLibros">Ciencia Ficcion</p>
-        
-        <div class="divFlexLibros">
-        
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="asd" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-    </div>
-    </section>
-
     
+
+
     <footer>Derechos reservados BookStytem ®</footer>
 
     <script src="script.js"></script>

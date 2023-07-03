@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Option Value</title>
+</head>
+<body>
+  <label for="optionValue">Option Value:</label>
+  <select id="optionValue" onchange="showForm()">
+    <option value="hide">Hide Form</option>
+    <option value="show">Show Form</option>
+  </select>
+
+  <form id="form" style="display: none;">
+    <!-- Aquí puedes agregar los campos del formulario -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+  </form>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
