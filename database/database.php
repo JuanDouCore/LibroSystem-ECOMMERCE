@@ -98,7 +98,7 @@ class database {
 
     //consultas para libros
     public static function cargarLibro($libro) {
-        self::sendQuery("insert into libros (titulo, autor, descripcion, referencia_imagen, fecha_publicacion, categoria, stock, vendidos)
+        self::sendQuery("insert into libros (titulo, autor, descripcion, referencia_imagen, fecha_publicacion, categoria, stock, vendidos, precio)
         values ('" . $libro->getTitulo() . "','"
          . $libro->getAutor() . "','"
           . $libro->getDescripcion() . "','"
@@ -106,7 +106,8 @@ class database {
              . $libro->getFechaPublicacion() . "','"
                 . $libro->getCategoria() . "',"
                    . $libro->getStock() . ","
-                    . $libro->getVendidos() . ");");
+                    . $libro->getVendidos() . ",
+                    ".$libro->getPrecio() . ");");
 
         self::closeConnection();
     }
@@ -126,7 +127,8 @@ class database {
                 $lectura['fecha_publicacion'],
                 $lectura['categoria'],
                 $lectura['stock'],
-                $lectura['vendidos']
+                $lectura['vendidos'],
+                $lectura['precio']
             );
         }
     }
@@ -147,7 +149,8 @@ class database {
                 $lectura['fecha_publicacion'],
                 $lectura['categoria'],
                 $lectura['stock'],
-                $lectura['vendidos']
+                $lectura['vendidos'],
+                $lectura['precio']
             );
         }
 
@@ -172,7 +175,8 @@ class database {
                     $lectura['fecha_publicacion'],
                     $lectura['categoria'],
                     $lectura['stock'],
-                    $lectura['vendidos']
+                    $lectura['vendidos'],
+                    $lectura['precio']
                 );
             }
         } 
@@ -190,7 +194,8 @@ class database {
                     $lectura['fecha_publicacion'],
                     $lectura['categoria'],
                     $lectura['stock'],
-                    $lectura['vendidos']
+                    $lectura['vendidos'],
+                    $lectura['precio']
                 );
             }
         }
@@ -207,7 +212,8 @@ class database {
              . $libro->getFechaPublicacion() . "', categoria='"
                 . $libro->getCategoria() . "', stock="
                    . $libro->getStock() . ", vendidos="
-                    . $libro->getVendidos() .
+                    . $libro->getVendidos() . ", precio=" 
+                    . $libro->getPrecio() .
                      " WHERE id=".$libro->getId().";");
 
         self::closeConnection();
