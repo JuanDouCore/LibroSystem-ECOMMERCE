@@ -267,4 +267,54 @@ footer{
     background-color: aquamarine;
     align-items: center;
 }
-
+.ArticlePrincipalVentas{
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: 100%;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.divVenta{
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: lightblue;
+    height: 100px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.seccionInfoVenta{
+    font-size: large;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    align-items: center;
+}
+.divEstadoPago{
+    border: 2px solid black;
+}
+.divEstadoVenta{
+    border: 2px solid black;
+}
+.costoTotalVenta{
+    border: 2px solid black;
+}
+.datosEnvioVenta{
+    border: 2px solid black;
+}

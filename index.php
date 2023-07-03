@@ -1,3 +1,7 @@
+<?php 
+    require_once './controllers/booksController.php';
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,42 +195,8 @@
 
     <section id="seccionLibros">
         <p class="tituloLibros">Comedia</p>
-        
-        <div class="divFlexLibros">
-        
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-        </div>
     </section>
-
+                
 
     <section id="seccionLibros">
         <p class="tituloLibros">Ciencia Ficcion</p>
@@ -271,4 +241,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
