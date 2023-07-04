@@ -1,7 +1,9 @@
 <?php 
 require_once './controllers/booksController.php';
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 ?>
 
 

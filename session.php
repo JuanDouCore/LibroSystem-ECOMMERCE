@@ -1,6 +1,7 @@
 <?php 
 
 require_once 'database/database.php';
+
 session_start();
 
 if(isset($_REQUEST['logout'])) {

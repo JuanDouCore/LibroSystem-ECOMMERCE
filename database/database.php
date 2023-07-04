@@ -219,6 +219,20 @@ class database {
         self::closeConnection();
     }
 
+    public static function obtenerStockLibro($id) {
+        $consulta = self::getQuery("SELECT stock FROM libros WHERE id=".$id.";");
+
+        if($lectura = mysqli_fetch_array($consulta)) {
+            return $lectura['stock'];
+        }
+    }
+    public static function obtenerCostoLibro($id) {
+        $consulta = self::getQuery("SELECT precio FROM libros WHERE id=".$id.";");
+
+        if($lectura = mysqli_fetch_array($consulta)) {
+            return $lectura['precio'];
+        }
+    }
     public static function agregarStockLibro($id, $cantidad) {
         self::sendQuery("UPDATE libros SET stock=stock+".$cantidad." WHERE id=".$id.";");
         self::closeConnection();

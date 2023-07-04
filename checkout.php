@@ -1,10 +1,25 @@
 <?php
 
-session_start();
+require_once './controllers/sellController.php';
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+//prevenir que entre sin estar logead
 if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true) {
     header("Location: index.php");
     exit();
 }
+
+
+//Prevenir que entre si el carrito esta vacio
+if(!isset($_SESSION['carrito'])) {
+    $_SESSION['errorLogin'] = "Tu carrito esta vacio, considera agregar libros";
+    header("Location: index.php");
+    exit();
+}
+
 
 ?>
 
@@ -156,93 +171,10 @@ if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true) {
         <article class="ArticlePrincipalCheckout">
         <p>Libros en el carrito</p>
         <br>
-        
-        <div class="divLibroCheckOut">
-        
-        <div class="divFotoCheckOut">
-            <img src="https://todoaudiolibros.com/usd/wp-content/uploads/2022/02/MOBY-DICK.jpg" alt="mobyDick foto" >
-        </div>
-        <div>
-            <p>El Señor de los Anillos asd asdasdasd as</p>
-        </div>
-       
-        <div>
-            <p>Precio</p>
-        </div>
-       
-        <div>
-            <p>Cantidad</p>
-        </div>
-        
-        <div>
-            <form action="sellController.php" method="post">
-                            <input type="hidden" name="libro" value="1">
-                            <label for="btnLibro">
-                                <input name="eliminardecarrito" id="eliminardecarrito" type="submit" value="Eliminar">
-                            </label>
-            </form>
-        </div>
-        
-    </div>
 
-
-
-
-    <div class="divLibroCheckOut">
-        
-        <div class="divFotoCheckOut">
-            <img src="https://todoaudiolibros.com/usd/wp-content/uploads/2022/02/MOBY-DICK.jpg" alt="mobyDick foto" >
-        </div>
-        <div>
-            <p>Titulo</p>
-        </div>
-       
-        <div>
-            <p>Precio</p>
-        </div>
-       
-        <div>
-            <p>Cantidad</p>
-        </div>
-        
-        <div>
-            <form action="sellController.php" method="post">
-                            <input type="hidden" name="libro" value="1">
-                            <label for="btnLibro">
-                                <input name="eliminardecarrito" id="eliminardecarrito" type="submit" value="Eliminar">
-                            </label>
-            </form>
-        </div>
-        
-    </div>
-
-    <div class="divLibroCheckOut">
-        
-        <div class="divFotoCheckOut">
-            <img src="https://todoaudiolibros.com/usd/wp-content/uploads/2022/02/MOBY-DICK.jpg" alt="mobyDick foto" >
-        </div>
-        <div>
-            <p>Titulo</p>
-        </div>
-       
-        <div>
-            <p>Precio</p>
-        </div>
-       
-        <div>
-            <p>Cantidad</p>
-        </div>
-        
-        <div>
-            <form action="sellController.php" method="post">
-                            <input type="hidden" name="libro" value="1">
-                            <label for="btnLibro">
-                                <input name="eliminardecarrito" id="eliminardecarrito" type="submit" value="Eliminar">
-                            </label>
-            </form>
-        </div>
-        
-    </div>
+        <?php 
+        cargarLibrosCarrito();
+        ?>
 
     </article>
     
@@ -261,13 +193,13 @@ if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true) {
 
         <form id="datosDeEnvioForm" class="datosDeEnvioForm" method="post" action="/controllers/sellController.php">
                 Calle <br>
-                <input type="text">
+                <input type="text" name="calle" id="calle">
                 <br>Altura <br>
-                <input type="number">
+                <input type="number" name="altura" id="altura">
                 <br>Localidad<br>
-                <input type="text">
+                <input type="text" name="localidad" id="localidad">
                 <br>Provincia<br>
-                <input type="text">
+                <input type="text"  name="provincia" id="provincia">
                 <br>
                 <br>
                 Metodo de pago
@@ -283,7 +215,7 @@ if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true) {
                     Mercadopago / Transferencia
                 </label>
                 <br><br>
-                <p>TOTAL $101010</p>
+                <p>TOTAL $<?php calcularTotalCarrito()?></p>
 
                 <input type="submit" name="procesarCompra_Envio" value="CONFIRMAR">
         </form>
@@ -303,7 +235,7 @@ if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true) {
                     Mercadopago / Transferencia
                 </label>
                 <br><br>
-                <p>TOTAL $101010</p>
+                <p>TOTAL $<?php calcularTotalCarrito()?></p>
 
                 <input type="submit" name="procesarCompra_Retiro" value="CONFIRMAR">
         </form>

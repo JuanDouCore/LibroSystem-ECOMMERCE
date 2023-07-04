@@ -4,10 +4,11 @@ class Libro_Carrito {
     private $idLibro;
     private $cantidad;
 
+
     public function __construct($idLibro, $cantidad)
     {
         $this->idLibro=$idLibro;
-        $this->$cantidad=$cantidad;
+        $this->cantidad=$cantidad;
     }
 
     /**

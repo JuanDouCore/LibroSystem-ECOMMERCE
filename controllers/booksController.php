@@ -4,6 +4,7 @@ require_once __DIR__.'/../database/database.php';
 
     function leerLibros($categoria){
         $libros = database::leerLibrosDeCategoria($categoria);
+        
         foreach($libros as $libro){
             echo '<div class="divLibros">
             <p class="tituloLibro">'.$libro->getTitulo().'</p>
