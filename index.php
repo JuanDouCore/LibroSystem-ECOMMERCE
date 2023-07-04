@@ -154,86 +154,31 @@
 
     <section id="seccionLibros">
         <p class="tituloLibros">Terror</p>
-        
         <div class="divFlexLibros">
-        
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de leeos Anillos</p>
-                <br>
-                <div class="divImgLibro"><img src="/librosystem/images/libro_muestra.jpg" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="asd" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <br>
-                <div class="divImgLibro"><img src="/librosystem/images/descarga.jpg" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
+            <?php 
+            leerLibros("TERROR");
+            ?>
         </div>
     </section>
 
 
     <section id="seccionLibros">
         <p class="tituloLibros">Comedia</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("COMEDIA");
+            ?>
+        </div>
     </section>
                 
 
     <section id="seccionLibros">
         <p class="tituloLibros">Ciencia Ficcion</p>
-        
         <div class="divFlexLibros">
-        
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="asd" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-            <div class="divLibros">
-                <p class="tituloLibro">El Señor de los Anillos</p>
-                <div class="divImgLibro"><img src="" alt="imagenLibros"></div>
-                <br>
-                <p class="precioLibro">$100</p>
-                <div class="botonFlex">
-                    <form method="get" action="libro.php">
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="btnLibro" type="submit" value="Ver libro">
-                        </label>
-                    </form>
-                </div>
-            </div>
-
-    </div>
+            <?php 
+            leerLibros("CIENCIA FICCION");
+            ?>
+        </div>
     </section>
 
     

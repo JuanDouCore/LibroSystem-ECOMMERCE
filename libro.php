@@ -1,3 +1,10 @@
+<?php 
+require_once './controllers/booksController.php'; 
+
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +25,7 @@
             <ul>
 
             <?php 
-            session_start();
+            
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '
@@ -142,35 +149,45 @@
         </div>
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
-
+    <?php 
+    $libroAMostrar = leerLibro($_GET['libro']);
+    ?>      
+    
+    
     <section id="seccionLibrosDescripcion">
         <article class="flexInfoLibro">
-            <div class="divFoto"><img src="./images/libro_muestra.jpg" alt="mobyDick foto" ></div>
+            <?php 
+            echo '<div class="divFoto"><img src="/librosystem/images/'.$libroAMostrar->getImagenRuta().'" alt="mobyDick foto" ></div>
             <div class="divInfo">
-                <h2>El Señor de los Anillos asd eras</h2>
-                <p>Genero</p>
+                <h2>'.$libroAMostrar->getTitulo().'</h2>
+                <p>'.$libroAMostrar->getCategoria().'</p>
                 <br><br>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius explicabo, maxime laboriosam iure distinctio sapiente debitis iusto accusamus consectetur quisquam! Magni quam provident blanditiis quae vel placeat eum, dicta quasi!</p>
+                <p>'.$libroAMostrar->getDescripcion().'</p>
                 <br>
-                <p>Autor.</p>
-                <p>Fecha release</p>
-                <br><br>
-                    <form action="sellController.php" method="post">
-                        <input type="number" name="cantidad" min="1" value="1"> 
-                        <input type="hidden" name="libro" value="1">
-                        <label for="btnLibro">
-                            <input id="agregarCarrito" name="agregarCarrito" type="submit" value="Agregar al carrito">
-                        </label>
-                    </form>
-                    <p style="color: red;">No hay unidades en stock</p>
-            </div>
+                <p>'.$libroAMostrar->getAutor().'</p>
+                <p>Lanzado el '.$libroAMostrar->getFechaPublicacion().'</p>
+                <br><br>';
+                
+                    
+            if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']===true){
+                echo'<form action="sellController.php" method="post">
+                <input type="number" name="cantidad" min="1" value="1"> 
+                <input type="hidden" name="libro" value="'.$libroAMostrar->getId().'">
+                <label for="btnLibro">
+                    <input id="agregarCarrito" name="agregarCarrito" type="submit" value="Agregar al carrito">
+                </label>
+            </form>';
+            }
+            if(isset($_SESSION['errorAgregarCarrito'])){
+                echo'<p style = "color = red;">'.$_SESSION['errorAgregarCarrito'].'</p>';
+                unset($_SESSION['errorAgregarCarrito']);
+            }
+            echo '</div>';
+            ?>
         </article>
-        
     </section>
-    
-
     <br><br>
-    <footer>Derechos reservados BookStytem ®</footer>
+    <footer>Derechos reservados BookSystem ®</footer>
 
     <script src="script.js"></script>
 </body>
