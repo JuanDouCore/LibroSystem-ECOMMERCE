@@ -1,8 +1,8 @@
 <?php 
 
-    require_once './models/Libro.php';
-    require_once './models/Venta.php';
-    require_once './models/Libro_Vendido.php';
+    require_once __DIR__.'/../models/Libro.php';
+    require_once __DIR__.'/../models/Venta.php';
+    require_once __DIR__.'/../models/Libro_Vendido.php';
 
 
 class database {

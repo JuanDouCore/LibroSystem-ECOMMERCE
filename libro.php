@@ -1,8 +1,9 @@
 <?php 
-require_once './controllers/booksController.php'; 
+require_once './controllers/booksController.php';
 
 session_start();
 ?>
+
 
 
 <!DOCTYPE html>
@@ -150,38 +151,40 @@ session_start();
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     <?php 
-    $libroAMostrar = leerLibro($_GET['libro']);
+    $libroAMostrar = leerLibro($_REQUEST['libro']);
     ?>      
     
     
     <section id="seccionLibrosDescripcion">
         <article class="flexInfoLibro">
             <?php 
-            echo '<div class="divFoto"><img src="/librosystem/images/'.$libroAMostrar->getImagenRuta().'" alt="mobyDick foto" ></div>
+            echo '<div class="divFoto"><img src="/librosystem/images/'.$libroAMostrar->getImagenRuta().'" alt="img libro" ></div>
             <div class="divInfo">
                 <h2>'.$libroAMostrar->getTitulo().'</h2>
                 <p>'.$libroAMostrar->getCategoria().'</p>
                 <br><br>
                 <p>'.$libroAMostrar->getDescripcion().'</p>
                 <br>
-                <p>'.$libroAMostrar->getAutor().'</p>
-                <p>Lanzado el '.$libroAMostrar->getFechaPublicacion().'</p>
+                <p>Autor: '.$libroAMostrar->getAutor().'</p>
+                <p>Publicado el '.$libroAMostrar->getFechaPublicacion().'</p>
                 <br><br>';
                 
                     
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']===true){
-                echo'<form action="sellController.php" method="post">
+                echo'<form action="./controllers/sellController.php" method="post">
                 <input type="number" name="cantidad" min="1" value="1"> 
                 <input type="hidden" name="libro" value="'.$libroAMostrar->getId().'">
                 <label for="btnLibro">
-                    <input id="agregarCarrito" name="agregarCarrito" type="submit" value="Agregar al carrito">
+                    <input id="agregarAlCarrito" name="agregarAlCarrito" type="submit" value="Agregar al carrito">
                 </label>
             </form>';
             }
+            
             if(isset($_SESSION['errorAgregarCarrito'])){
-                echo'<p style = "color = red;">'.$_SESSION['errorAgregarCarrito'].'</p>';
+                echo'<p style="color:red;">'.$_SESSION['errorAgregarCarrito'].'</p>';
                 unset($_SESSION['errorAgregarCarrito']);
             }
+
             echo '</div>';
             ?>
         </article>
@@ -191,5 +194,4 @@ session_start();
 
     <script src="script.js"></script>
 </body>
-
 </html>
