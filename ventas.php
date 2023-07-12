@@ -1,3 +1,15 @@
+<?php 
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || !isset($_SESSION['isEmpleoye'])) {
+        $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de ventas";
+        header("Location: index.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +30,6 @@
             <ul>
 
             <?php 
-            session_start();
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '
@@ -141,98 +152,43 @@
                 <button onclick="closeModalRegister()">Salir</button>
         </div>
     </div>
+    <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
 
     <section>
         <article class="ArticlePrincipalVentas">
         <p>Ventas pendientes</p>
         <br>
         
-        <div class="divVenta">
-        
-            <div>
-                <p>#450</p>
+            <div class="divVenta">
+                    <div>
+                        <p>#450</p>
+                    </div>
+                    <div>
+                        <p>Ejemplares: 2</p>
+                        <p>Cant. Total: 2</p>
+                        <p>Precio total: 400$</p>
+                    </div>
+                    <div>
+                    <p>Estado: Para entregar</p>
+                    <p>Pago: Pagado tarjeta</p>
+                    </div>
+                
+                    <div>
+                        <form action="venta.php" method="get">
+                                    <input type="hidden" name="venta" value="1">
+                                    <label for="btnLibro">
+                                        <input id="verVenta" type="submit" value="Ver venta">
+                                    </label>
+                        </form>
+                    </div>      
             </div>
-        
-                <div>
-                    <p>Ejemplares: 2</p>
-                    <p>Cant. Total: 2</p>
-                    <p>Precio total: 400$</p>
-                </div>
-        
-                <div>
-                <p>Estado: Para entregar</p>
-                <p>Pago: Pagado tarjeta</p>
-                </div>
-            
-                <div>
-                    <form action="venta.php" method="get">
-                                <input type="hidden" name="venta" value="1">
-                                <label for="btnLibro">
-                                    <input name="verVenta" id="verVenta" type="submit" value="Ver venta">
-                                </label>
-                    </form>
-                </div>      
-        
-        </div>
-        <div class="divVenta">
-        
-            <div>
-                <p>#451</p>
-            </div>
-        
-                <div>
-                    <p>Ejemplares: 4</p>
-                    <p>Cant. Total: 4</p>
-                    <p>Precio total: 900$</p>
-                </div>
-        
-                <div>
-                <p>Estado: Entregado</p>
-                <p>Pago: Pagado tarjeta</p>
-                </div>
-            
-                <div>
-                    <form action="venta.php" method="get">
-                                <input type="hidden" name="venta" value="1">
-                                <label for="btnLibro">
-                                    <input name="verVenta" id="verVenta" type="submit" value="Ver venta">
-                                </label>
-                    </form>
-                </div>      
-        
-        </div>
-        <div class="divVenta">
-        
-            <div>
-                <p>#452</p>
-            </div>
-        
-                <div>
-                    <p>Ejemplares: 7</p>
-                    <p>Cant. Total: 7</p>
-                    <p>Precio total: 1200$</p>
-                </div>
-        
-                <div>
-                <p>Estado: Entregado</p>
-                <p>Pago: Pagado MP</p>
-                </div>
-            
-                <div>
-                    <form action="venta.php" method="get">
-                                <input type="hidden" name="venta" value="1">
-                                <label for="btnLibro">
-                                    <input name="verVenta" id="verVenta" type="submit" value="Ver venta">
-                                </label>
-                    </form>
-                </div>      
-        
-        </div>
 
-    </article>
+        </article>
     
-</section>
-    <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
+    </section>
+    
+
+
     <footer>Derechos reservados BookStytem ®</footer>
 
 <script src="script.js"></script>

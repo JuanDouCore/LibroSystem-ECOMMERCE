@@ -153,7 +153,7 @@ if (!isset($_SESSION)) {
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     <?php 
-    $libroAMostrar = leerLibro($_REQUEST['libro']);
+    $libroAMostrar = leerLibro($_GET['libro']);
     ?>      
     
     

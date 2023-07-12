@@ -182,7 +182,7 @@ class database {
         } 
 
         if(isset($titulo)) {
-            $consulta = self::getQuery("select * from libros where id LIKE '".$titulo."%';");
+            $consulta = self::getQuery("select * from libros where titulo LIKE '".$titulo."%';");
 
             while($lectura = mysqli_fetch_array($consulta)) {
                 $libros[] = new Libro(

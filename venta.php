@@ -1,3 +1,15 @@
+<?php 
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || !isset($_SESSION['isEmpleoye'])) {
+        $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de ventas";
+        header("Location: index.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +30,6 @@
             <ul>
 
             <?php 
-            session_start();
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '
