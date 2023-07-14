@@ -61,7 +61,6 @@ if(isset($_POST['eliminardecarrito'])) {
         exit();
     }
 }
-//fin seccion
 
 
 if(isset($_POST['procesarCompra_Envio'])){
@@ -168,7 +167,7 @@ if(isset($_POST['procesarCompra_Retiro'])){
         database::reducirStockLibro($libroDelCarrito->getLibroId(),$libroDelCarrito->getCantidad());
         database::agregarVendidosLibro($libroDelCarrito->getLibroId(), $libroDelCarrito->getCantidad());
     }
-    
+
         unset($_SESSION['carrito']);
         header("Location: ../index.php");
         exit();
@@ -185,7 +184,8 @@ if(isset($_POST['procesarEstadoVenta'])) {
     header("Location: ../ventas.php");
     exit();
 }
-    
+
+//fin seccion
 
 //comienzo de seccion para funciones del Controlador
 function cargarLibrosCarrito() {

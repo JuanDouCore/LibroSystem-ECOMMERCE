@@ -160,10 +160,8 @@
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     
     <?php
-
      $venta = LeerVenta($_GET['venta']);
      $usuario = leerUsuarioDeVenta($venta->getIdUsuario());
-
     ?>
 
 
@@ -185,21 +183,16 @@
                 <br>
                 
                 <?php
-                
                 if($venta->getMetodoDeEntrega()=== "ENVIAR"){
-         
-                 echo '
-                 <div class="datosEnvioVenta">
-                 <p>DIRECCION: '.$venta->getDireccionEnvio_calle().'</p>
-                 <P>'.$venta->getDireccionEnvio_altura().'</P>
-                 <P>'.$venta->getDireccionEnvio_localidad().'</P>
-                 <p>'.$venta->getDireccionEnvio_provincia().'</p>
-                </div>
-
-                 ';
-
+                    echo '
+                    <div class="datosEnvioVenta">
+                    <p>DIRECCION: '.$venta->getDireccionEnvio_calle().'</p>
+                    <P>'.$venta->getDireccionEnvio_altura().'</P>
+                    <P>'.$venta->getDireccionEnvio_localidad().'</P>
+                    <p>'.$venta->getDireccionEnvio_provincia().'</p>
+                    </div>
+                    ';
                 }
-
                 ?>
 
         <br><br>

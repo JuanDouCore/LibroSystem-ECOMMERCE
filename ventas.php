@@ -168,8 +168,6 @@
         
            <?php
             leerVentasPendientes();
-            
-
            ?>
 
         </article>
