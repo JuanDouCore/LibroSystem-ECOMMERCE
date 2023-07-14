@@ -191,7 +191,16 @@ if(!isset($_SESSION['carrito'])) {
             </select>
         </div>
 
-        <form id="datosDeEnvioForm" class="datosDeEnvioForm" method="post" action="/controllers/sellController.php">
+        <?php 
+            if(isset($_SESSION['errorCheckout'])){
+                echo'<p style="color:red;">'.$_SESSION['errorCheckout'].'</p>';
+                unset($_SESSION['errorCheckout']);
+            }
+        ?> 
+
+
+
+        <form id="datosDeEnvioForm" class="datosDeEnvioForm" method="post" action="./controllers/sellController.php">
                 Calle <br>
                 <input type="text" name="calle" id="calle">
                 <br>Altura <br>
@@ -220,7 +229,7 @@ if(!isset($_SESSION['carrito'])) {
                 <input type="submit" name="procesarCompra_Envio" value="CONFIRMAR">
         </form>
 
-        <form id="datosDeCompraForm" class="datosDeCompraForm" method="post" action="/controllers/sellController.php">
+        <form id="datosDeCompraForm" class="datosDeCompraForm" method="post" action="./controllers/sellController.php">
                 <br>
                 Metodo de pago
                 <label>

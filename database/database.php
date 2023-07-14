@@ -2,6 +2,7 @@
 
     require_once __DIR__.'/../models/Libro.php';
     require_once __DIR__.'/../models/Venta.php';
+    require_once __DIR__.'/../models/Usuario.php';
     require_once __DIR__.'/../models/Libro_Vendido.php';
 
 
@@ -93,6 +94,16 @@ class database {
         self::closeConnection();
     }
 
+    public static function leerUsuario($idUsuario) {
+        $consulta = self::getQuery("select * from usuarios where id=" .$idUsuario. ";");
+
+        if($lectura = mysqli_fetch_array($consulta)) {
+            $usuario = new Usuario($lectura['id'], $lectura['user'], $lectura['name'], $lectura['password'], $lectura['dni']);
+            return $usuario;
+        }
+
+        self::closeConnection();
+    }
  
 
 
@@ -264,10 +275,11 @@ class database {
         (idusuario, 
         cantidadtotal, 
         costototal, 
-        mediopago, 
+        mediodepago, 
         metododeentrega, 
         direccionenvio_calle, 
-        direccionenvio_altura, 
+        direccionenvio_altura,
+        direccionenvio_localidad, 
         direccionenvio_provincia, 
         estado)
         VALUES (
@@ -310,7 +322,7 @@ class database {
     public static function leerVentasPendientes() {
         $ventas = array();
 
-        $consulta = self::getQuery("SELECT * FROM ventas WHERE estado='PENDIENTE_ENVIO' OR estado='PENDIENTE_ENTREGA';");
+        $consulta = self::getQuery("SELECT * FROM ventas WHERE estado='A ENVIAR' OR estado='POR RETIRAR';");
 
         while($lectura = mysqli_fetch_array($consulta)) {
             $ventas[] = new Venta(
@@ -327,6 +339,7 @@ class database {
                 $lectura['estado']
             );
         }
+        return $ventas;
     }
 
     public static function modificarEstadoVenta($idVenta, $nuevoEstado) {
@@ -368,6 +381,19 @@ class database {
         self::sendQuery("DELETE FROM libros_vendidos WHERE ventaid=".$idVenta.";");
 
         self::closeConnection();
+    }
+
+    public static function calcularLibrosTotalesDeVenta($idVenta) {
+        $libros_vendidos = array();
+
+        $total = 0;
+
+        $consulta = self::getQuery("SELECT cantidad FROM libros_vendidos WHERE ventaid=". $idVenta. ";");
+        while($lectura = mysqli_fetch_array($consulta)) {
+            $total += $lectura['cantidad'];
+        }
+
+        return $total;
     }
 }
 ?>

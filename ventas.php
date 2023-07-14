@@ -1,4 +1,6 @@
 <?php 
+    require_once './controllers/sellController.php';
+
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -153,35 +155,20 @@
         </div>
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
+    
+
+
 
     <section>
         <article class="ArticlePrincipalVentas">
         <p>Ventas pendientes</p>
         <br>
         
-            <div class="divVenta">
-                    <div>
-                        <p>#450</p>
-                    </div>
-                    <div>
-                        <p>Ejemplares: 2</p>
-                        <p>Cant. Total: 2</p>
-                        <p>Precio total: 400$</p>
-                    </div>
-                    <div>
-                    <p>Estado: Para entregar</p>
-                    <p>Pago: Pagado tarjeta</p>
-                    </div>
-                
-                    <div>
-                        <form action="venta.php" method="get">
-                                    <input type="hidden" name="venta" value="1">
-                                    <label for="btnLibro">
-                                        <input id="verVenta" type="submit" value="Ver venta">
-                                    </label>
-                        </form>
-                    </div>      
-            </div>
+           <?php
+            leerVentasPendientes();
+            
+
+           ?>
 
         </article>
     

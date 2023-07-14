@@ -64,6 +64,111 @@ if(isset($_POST['eliminardecarrito'])) {
 //fin seccion
 
 
+if(isset($_POST['procesarCompra_Envio'])){
+
+    if($_POST['calle'] === "" || $_POST['altura'] === "" || $_POST['localidad'] === "" || $_POST['provincia'] === "" || $_POST['metodoPago'] === ""){
+        $_SESSION['errorCheckout'] = "Por favor complete todos los campos";
+        header("Location: ../checkout.php");
+        exit();
+    }
+
+    $direccionCalle = $_POST['calle'];
+    $direccionAltura = $_POST['altura'];
+    $direccionLocalidad = $_POST['localidad'];
+    $direccionProvincia = $_POST['provincia'];
+
+    $metodoPago = $_POST['metodoPago'];
+    
+    $librosDelCarrito = array();
+    $costoTotalCompra = 0;
+    $cantidadLibros = 0 ;
+    
+    foreach($_SESSION['carrito'] as $clave => $objeto) {
+
+        $libro = database::leerLibro($objeto->getIdLibro());
+        $costoTotal = $objeto->getCantidad()*$libro->getPrecio();
+        $titulo = $libro->getTitulo();
+        $costoTotalCompra+=$costoTotal;
+        $libroCarrito = new Libro_Vendido(database::obtenerProximoIdDeVenta(), $objeto->getIdLibro(),$titulo,$objeto->getCantidad(),$costoTotal);
+
+        $cantidadLibros++;
+
+        $librosDelCarrito[] = $libroCarrito;
+    }
+    
+    $venta = new Venta(database::obtenerProximoIdDeVenta(),
+        $_SESSION['userLogged'],
+        $cantidadLibros,
+        $costoTotalCompra,
+        $metodoPago,"ENVIAR",
+        $direccionCalle,
+        $direccionAltura,
+        $direccionLocalidad,
+        $direccionProvincia,
+        "A ENVIAR");
+
+    database::cargarVenta($venta);
+
+    foreach($librosDelCarrito as $libroDelCarrito){
+        database::cargarLibroVendido($libroDelCarrito);
+        database::reducirStockLibro($libroDelCarrito->getLibroId(),$libroDelCarrito->getCantidad());
+    }
+        unset($_SESSION['carrito']);
+        header("Location: ../index.php");
+        exit();
+
+}
+
+if(isset($_POST['procesarCompra_Retiro'])){
+
+    if($_POST['metodoPago'] === ""){
+        $_SESSION['errorCheckout'] = "Por favor complete todos los campos";
+        header("Location: ../checkout.php");
+        exit();
+    }
+
+    $metodoPago = $_POST['metodoPago'];
+    
+    $librosDelCarrito = array();
+    $costoTotalCompra = 0;
+    $cantidadLibros = 0 ;
+    
+    foreach($_SESSION['carrito'] as $clave => $objeto) {
+
+        $libro = database::leerLibro($objeto->getIdLibro());
+        $costoTotal = $objeto->getCantidad()*$libro->getPrecio();
+        $titulo = $libro->getTitulo();
+        $costoTotalCompra+=$costoTotal;
+        $libroCarrito = new Libro_Vendido(database::obtenerProximoIdDeVenta(), $objeto->getIdLibro(),$titulo,$objeto->getCantidad(),$costoTotal);
+
+        $cantidadLibros++;
+
+        $librosDelCarrito[] = $libroCarrito;
+    }
+    
+    $venta = new Venta(database::obtenerProximoIdDeVenta(),
+        $_SESSION['userLogged'],
+        $cantidadLibros,
+        $costoTotalCompra,
+        $metodoPago,"RETIRAR",
+        null,
+        0,
+        null,
+        null,
+        "POR RETIRAR");
+
+    database::cargarVenta($venta);
+
+    foreach($librosDelCarrito as $libroDelCarrito){
+        database::cargarLibroVendido($libroDelCarrito);
+        database::reducirStockLibro($libroDelCarrito->getLibroId(),$libroDelCarrito->getCantidad());
+    }
+        unset($_SESSION['carrito']);
+        header("Location: ../index.php");
+        exit();
+
+}
+    
 
 //comienzo de seccion para funciones del Controlador
 function cargarLibrosCarrito() {
@@ -122,6 +227,68 @@ function calcularTotalCarrito() {
     }
 
     echo $costoTotal;
+}
+
+function leerVentasPendientes(){
+  $ventasPendientes = database::leerVentasPendientes();
+
+  foreach($ventasPendientes as $venta){
+    echo '
+    <div class="divVenta">
+                    <div>
+                        <p>#'.$venta->getId().'</p>
+                    </div>
+                    <div>
+                        <p>Ejemplares: '. $venta ->getCantidadTotal().'</p>
+                        <p>Cant. Total: '.database::calcularLibrosTotalesDeVenta($venta->getId()).'</p>
+                        <p>Precio total: '.$venta->getCostoTotal().'$</p>
+                    </div>
+                    <div>
+                    <p>Estado: '.$venta->getEstado().'</p>
+                    <p>Pago: Pagado '.$venta->getMedioDePago().'</p>
+                    </div>
+                
+                    <div>
+                        <form action="venta.php" method="get">
+                                    <input type="hidden" name="venta" value="'.$venta->getId().'">
+                                    <label for="btnLibro">
+                                        <input id="verVenta" type="submit" value="Ver venta">
+                                    </label>
+                        </form>
+                    </div>      
+            </div>
+    ';
+    
+
+  }
+
+}
+
+function LeerVenta($IdVenta){
+
+    $venta = database::leerVenta($IdVenta);
+    
+    return $venta;
+}
+
+function leerUsuarioDeVenta($idUsuario) {
+    $usuario = database::leerUsuario($idUsuario);
+
+    return $usuario;
+}
+
+function mostrarLibrosDeVenta($IdVenta){
+    $libros = database::leerLibrosVendidosDeVenta($IdVenta);
+
+    foreach($libros as $libro){
+
+    echo '<li>'.$libro->getTitulo().' | '.$libro->getCantidad().'U | TOTAL $'.$libro->getCostoTotal().'</li>';
+    
+
+    }
+
+
+
 }
 
 ?>

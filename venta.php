@@ -1,4 +1,7 @@
 <?php 
+
+    require_once './controllers/sellController.php';
+
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -153,39 +156,60 @@
         </div>
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
+    
+    <?php
+
+     $venta = LeerVenta($_GET['venta']);
+     $usuario = leerUsuarioDeVenta($venta->getIdUsuario());
+
+    ?>
+
 
     <section class="seccionInfoVenta">
     <br>
         <div class="datosVenta">
-            <p>#450</p>
-            <p>Pepe Argento</p>
-            <p>DNI 45007207</p>
+            <p>#<?php echo $venta->getId() ?></p>
+            <p><?php echo $usuario->getName() ?></p>
+            <p><?php echo $usuario->getDni() ?></p>
             <br><br>
         </div> 
         <div class="divEstadoPago">
-            <p>PAGADO</p>
+            <p>PAGADO CON: <?php echo $venta->getMedioDePago() ?></p>
         </div> 
         <br>
         <div class="divEstadoVenta">
-            <p>PENDIENTE DE ENVIO</p>
+            <p><?php echo $venta->getEstado() ?></p>
         </div>
                 <br>
-            <div class="datosEnvioVenta">
-                <p>DIRECCION</p>
-                <P>123</P>
-                <P>la matanza</P>
-                <p>bs as</p>
-            </div>
+                
+                <?php
+                
+                if($venta->getMetodoDeEntrega()=== "ENVIAR"){
+         
+                 echo '
+                 <div class="datosEnvioVenta">
+                 <p>DIRECCION: '.$venta->getDireccionEnvio_calle().'</p>
+                 <P>'.$venta->getDireccionEnvio_altura().'</P>
+                 <P>'.$venta->getDireccionEnvio_localidad().'</P>
+                 <p>'.$venta->getDireccionEnvio_provincia().'</p>
+                </div>
+
+                 ';
+
+                }
+
+                ?>
 
         <br><br>
         <div>
             <ul>
-                <li>Harry potter 2 | 2U | TOTAL $200</li>
-                <li>Moby dick | 2U | TOTAL $200</li>
+                <?php
+                 mostrarLibrosDeVenta($venta->getId());
+                ?>
             </ul>
         </div><br>
         <div class="costoTotalVenta">
-                <p>TOTAL $400</p>
+                <p>TOTAL $<?php echo $venta->getCostoTotal();?></p>
         </div>
             <br>
         <div>
