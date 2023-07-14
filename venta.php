@@ -11,6 +11,8 @@
         header("Location: index.php");
         exit();
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -213,14 +215,15 @@
         </div>
             <br>
         <div>
-            <form action="/controllers/sellController.php" method="post">
-                <select name="procesarVenta" id="procesarVenta">
-                    <option value="enviado">Enviado</option>
-                    <option value="entregado">Entregado</option>
-                    <option value="rechazar">Rechazar</option>
+            <form action="./controllers/sellController.php" method="post">
+                <input type="hidden" name="venta" value="<?php echo $venta->getId();?>">
+                <select name="estadoVenta" id="estadoVenta">
+                    <option value="ENVIADO">Enviado</option>
+                    <option value="ENTREGADO">Entregado</option>
+                    <option value="RECHAZADO">Rechazar</option>
                 </select>
 
-                <input type="submit" id="confirmarVenta" name="confirmarVenta" value="Procesar">
+                <input type="submit" id="procesarEstadoVenta" name="procesarEstadoVenta" value="Procesar">
             </form>
         </div>
         <br>

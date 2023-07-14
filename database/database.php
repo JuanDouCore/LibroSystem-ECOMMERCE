@@ -8,9 +8,9 @@
 
 class database {
 
-    private static $host = "db4free.net";
-    private static $user = "librosystem_user";
-    private static $password = "hola12345";
+    private static $host = "34.176.231.10";
+    private static $user = "root";
+    private static $password = "librosystempassword";
     private static $database = "librosystem";
     
     //gestion de la conexion sql

@@ -76,12 +76,13 @@ if(isset($_POST['procesarCompra_Envio'])){
     $direccionAltura = $_POST['altura'];
     $direccionLocalidad = $_POST['localidad'];
     $direccionProvincia = $_POST['provincia'];
-
     $metodoPago = $_POST['metodoPago'];
-    
-    $librosDelCarrito = array();
+
     $costoTotalCompra = 0;
     $cantidadLibros = 0 ;
+    
+    $librosDelCarrito = array();
+
     
     foreach($_SESSION['carrito'] as $clave => $objeto) {
 
@@ -89,11 +90,13 @@ if(isset($_POST['procesarCompra_Envio'])){
         $costoTotal = $objeto->getCantidad()*$libro->getPrecio();
         $titulo = $libro->getTitulo();
         $costoTotalCompra+=$costoTotal;
+
         $libroCarrito = new Libro_Vendido(database::obtenerProximoIdDeVenta(), $objeto->getIdLibro(),$titulo,$objeto->getCantidad(),$costoTotal);
 
         $cantidadLibros++;
-
         $librosDelCarrito[] = $libroCarrito;
+
+
     }
     
     $venta = new Venta(database::obtenerProximoIdDeVenta(),
@@ -111,7 +114,8 @@ if(isset($_POST['procesarCompra_Envio'])){
 
     foreach($librosDelCarrito as $libroDelCarrito){
         database::cargarLibroVendido($libroDelCarrito);
-        database::reducirStockLibro($libroDelCarrito->getLibroId(),$libroDelCarrito->getCantidad());
+        database::reducirStockLibro($libroDelCarrito->getIdLibro(),$libroDelCarrito->getCantidad());
+        database::agregarVendidosLibro($libroDelCarrito->getIdLibro(), $libroDelCarrito->getCantidad());
     }
         unset($_SESSION['carrito']);
         header("Location: ../index.php");
@@ -139,8 +143,8 @@ if(isset($_POST['procesarCompra_Retiro'])){
         $costoTotal = $objeto->getCantidad()*$libro->getPrecio();
         $titulo = $libro->getTitulo();
         $costoTotalCompra+=$costoTotal;
-        $libroCarrito = new Libro_Vendido(database::obtenerProximoIdDeVenta(), $objeto->getIdLibro(),$titulo,$objeto->getCantidad(),$costoTotal);
 
+        $libroCarrito = new Libro_Vendido(database::obtenerProximoIdDeVenta(), $objeto->getIdLibro(),$titulo,$objeto->getCantidad(),$costoTotal);
         $cantidadLibros++;
 
         $librosDelCarrito[] = $libroCarrito;
@@ -162,11 +166,24 @@ if(isset($_POST['procesarCompra_Retiro'])){
     foreach($librosDelCarrito as $libroDelCarrito){
         database::cargarLibroVendido($libroDelCarrito);
         database::reducirStockLibro($libroDelCarrito->getLibroId(),$libroDelCarrito->getCantidad());
+        database::agregarVendidosLibro($libroDelCarrito->getLibroId(), $libroDelCarrito->getCantidad());
     }
+    
         unset($_SESSION['carrito']);
         header("Location: ../index.php");
         exit();
 
+}
+
+if(isset($_POST['procesarEstadoVenta'])) {
+    $id = $_POST['venta'];
+    $estado = $_POST['estadoVenta'];
+
+    database::modificarEstadoVenta($id, $estado);
+    database::eliminarLibrosVendidosDeVenta($id);
+
+    header("Location: ../ventas.php");
+    exit();
 }
     
 
@@ -284,11 +301,16 @@ function mostrarLibrosDeVenta($IdVenta){
 
     echo '<li>'.$libro->getTitulo().' | '.$libro->getCantidad().'U | TOTAL $'.$libro->getCostoTotal().'</li>';
     
-
     }
+}
 
 
 
+//utilidades
+function mostrarModal($mensaje) {
+    echo '<script type="text/javascript">';
+    echo 'alert("' . $mensaje . '");';
+    echo '</script>';
 }
 
 ?>

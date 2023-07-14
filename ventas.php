@@ -10,6 +10,8 @@
         header("Location: index.php");
         exit();
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -177,6 +179,7 @@
 
 
     <footer>Derechos reservados BookStytem ®</footer>
+
 
 <script src="script.js"></script>
 </body>
