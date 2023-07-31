@@ -25,6 +25,9 @@ admin_panel_settings
 
 emleado
 */
+body{
+    margin: 0;
+}
 *{
     padding: 0;
     margin: 0;
@@ -104,7 +107,6 @@ header{
 }
 #seccionLibros{
    background-color: aliceblue;
-   height: 100%;
    border-bottom: 1px grey solid;
    border-right:5px grey solid ;
 }
@@ -115,8 +117,13 @@ footer{
   background-color: aqua;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 30px;
   text-align: center;
+}
+
+.footerUsuariosPhp{
+    bottom: 0;
+    position: absolute;
 }
 
 /* estilos para los modales de login-register */
@@ -318,3 +325,83 @@ footer{
 .datosEnvioVenta{
     border: 2px solid black;
 }
+
+
+
+
+
+/* PAGINA INDEX ADMIN.PHP */
+.divAdminFlexMain{
+    display: flex;
+    justify-content: center;
+}
+.divPhpAdminPrincipal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.divLinksPhpAdmin{
+    display: flex;
+    width: 300px;
+    height: 300px;
+    margin-top: 30px;
+    border: solid 2px aquamarine;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.buttonLinksAdminPhp{
+    border: solid 2px aquamarine;
+}
+
+/* FIN PAGINA INDEX ADMIN.PHP */
+
+
+/* PAGINA USUARIOS PHP */
+
+#seccionUsuariosPhp{
+    width: 100%;
+    height: 50px;
+}
+
+.divOpcionesUsuario{
+    display: flex;
+    margin-top: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.seccionMostrarUsuariosEspecificos{
+    width: 400px;
+    height: 100%;
+}
+.tablaMostrarUsuarios{
+    display: flex;
+    justify-content: center;
+}
+.tablaMostrarUsuarios table{
+    border: 2px solid aquamarine;
+    padding: 1px;
+}
+
+.tablaMostrarUsuarios th{
+    padding: 25px;
+}
+
+
+/* FIN PAGINA USUARIOS PHP */
+
+
+/* PAGINA CARGAR LIBROS PHP */
+
+#seccionCargarLibroPhp{
+    height: 100%;
+    width: 100%;
+}
+
+
+/* FIN PAGINA CARGAR LIBROS PHP   */

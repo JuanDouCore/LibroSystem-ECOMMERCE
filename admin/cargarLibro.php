@@ -1,29 +1,16 @@
-<?php 
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-
-    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || !isset($_SESSION['isAdmin'])) {
-        $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de administracion";
-        header("Location: index.php");
-        exit();
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Document</title>
 </head>
 <body>
-
-<!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
-<header>
+    <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
+    <header>
         <div class="divTit">
             <h1 class="titPrincipal">Books system</h1>
         </div>
@@ -31,7 +18,7 @@
             <ul>
 
             <?php 
-            
+            session_start();
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '
@@ -156,27 +143,18 @@
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
 
-    <section id="sectionAdminUno">
-        
-        <div class="divPhpAdminPrincipal">
-            <h1 class="tituloAdminPhp">Panel de Administrador</h1>
-        </div>
 
-        <div class="divAdminFlexMain">
-        <div class="divLinksPhpAdmin">
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Modificar usuarios</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Cargar Libro</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Cambiar stock libros</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Index estadisticas</p></button>
-        </div>
-        </div>
-                
+    <section id="seccionCargarLibroPhp">
+
+                <div>
+                    <form action=""></form>
+                </div>
     </section>
 
-    
-    <footer>Derechos reservados BookStytem ®</footer>
-
+    <footer class="footerUsuariosPhp">Derechos reservados BookStytem®</footer>
 
     <script src="script.js"></script>
-</body>
+
+    </body>
+
 </html>

@@ -113,8 +113,8 @@ if(isset($_POST['procesarCompra_Envio'])){
 
     foreach($librosDelCarrito as $libroDelCarrito){
         database::cargarLibroVendido($libroDelCarrito);
-        database::reducirStockLibro($libroDelCarrito->getIdLibro(),$libroDelCarrito->getCantidad());
-        database::agregarVendidosLibro($libroDelCarrito->getIdLibro(), $libroDelCarrito->getCantidad());
+        database::reducirStockLibro($libroDelCarrito->getLibroId(),$libroDelCarrito->getCantidad());
+        database::agregarVendidosLibro($libroDelCarrito->getLibroId(), $libroDelCarrito->getCantidad());
     }
         unset($_SESSION['carrito']);
         header("Location: ../index.php");
