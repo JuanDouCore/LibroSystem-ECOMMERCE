@@ -157,13 +157,77 @@
 
 
     <section id="seccionCargarLibroPhp">
+                <?php 
+                
+                if(isset($_SESSION['errorCargaLibro'])){
+                    echo '<p style="color:red;"> '.$_SESSION['errorCargaLibro'].' </p>';
+                    unset($_SESSION['errorCargaLibro']);
+                }
+                
+                ?>
+                <div class="formularioCarga">
+                    <form action="../controllers/adminController.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="label-box">Titulo:</div>
+                            <div class="input-box">
+                                <input type="text" name="titulo" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Autor:</div>
+                            <div class="input-box">
+                                <input type="text" name="autor" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Categoria:</div>
+                            <div class="input-box">
+                                <select name="categoria" id="categoria">
+                                    <option value="TERROR">Terror</option>
+                                    <option value="COMEDIA">Comedia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Descripcion:</div>
+                            <div class="input-box">
+                            <textarea name="descripcion" rows="5" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Fecha Publicacion:</div>
+                            <div class="input-box">
+                                <input type="date" name="fecha_publicacion" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Portada:</div>
+                            <div class="input-box">
+                                <input type="file" name="portada" accept="image/*" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Stock:</div>
+                            <div class="input-box">
+                                <input type="number" min="0" value = "0" name="stock" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="label-box">Precio:</div>
+                            <div class="input-box">
+                                <input type="number" min="1" value = "1" name="precio" required>
+                            </div>
+                        </div>
 
-                <div>
-                    <form action=""></form>
+                        <div class="form-group">
+                            <button class ="botonform" type="submit" name="cargarlibro">Enviar</button>
+                        </div>
+                    </form>
                 </div>
     </section>
+ 
 
-    <footer class="footerUsuariosPhp">Derechos reservados BookStytem®</footer>
+    <footer class="footerUsuariosPhp">Derechos reservados BookSystem®</footer>
 
     <script src="script.js"></script>
 

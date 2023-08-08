@@ -432,9 +432,53 @@ footer{
 /* PAGINA CARGAR LIBROS PHP */
 
 #seccionCargarLibroPhp{
-    height: 100%;
-    width: 100%;
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
 }
-
+.formularioCarga {
+    background-color: lightgray;
+    border: solid 2px aquamarine;
+    width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.label-box {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    background-color: #f0f0f0;
+}
+.input-box {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+}
+input[type="text"], input[type="image"],
+input[type="number"], input[type="date"], select, textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.botonform {
+    padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+}
 
 /* FIN PAGINA CARGAR LIBROS PHP   */

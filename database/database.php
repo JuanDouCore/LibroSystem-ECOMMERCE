@@ -164,7 +164,7 @@ class database {
         values ('" . $libro->getTitulo() . "','"
          . $libro->getAutor() . "','"
           . $libro->getDescripcion() . "','"
-           . $libro->getImagenSer() . "','" 
+           . $libro->getImagenRuta() . "','" 
              . $libro->getFechaPublicacion() . "','"
                 . $libro->getCategoria() . "',"
                    . $libro->getStock() . ","
@@ -279,6 +279,18 @@ class database {
                      " WHERE id=".$libro->getId().";");
 
         self::closeConnection();
+    }
+
+    public static function compararTituloLibro($titulo){
+        $consulta = self::getQuery("select * from libros where titulo='".$titulo."';");
+
+        if(mysqli_fetch_array($consulta)){
+            self::closeConnection();
+            return true;
+        } else { 
+            self::closeConnection();
+            return false;
+        }
     }
 
     public static function obtenerStockLibro($id) {

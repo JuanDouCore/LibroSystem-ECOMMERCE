@@ -25,6 +25,48 @@ if(isset($_POST['cambiarrol'])) {
     exit();
 }
 
+if(isset($_POST['cargarlibro'])){
+
+    $titulo = $_POST['titulo'];
+    $autor = $_POST['autor'];
+    $descripcion = $_POST['descripcion'];
+    $categoria = $_POST['categoria'];
+    $fecha_publicacion = $_POST['fecha_publicacion'];
+    $stock = $_POST['stock'];
+    $precio = $_POST['precio'];
+
+    if(database::compararTituloLibro($titulo)){
+        $_SESSION['errorCargaLibro'] = "Ya existe un libro con este titulo";
+        header("location: ../admin/cargar_libro.php");
+        exit();
+    }
+
+    $carpetaImagen = "../images/"; // Cambia esto a la ruta de la carpeta donde deseas almacenar las imágenes
+    $imagenCargada = $_FILES["portada"];
+
+    // Verificar si no hay errores durante la carga
+    if ($imagenCargada["error"] === UPLOAD_ERR_OK) {
+        $tempFilePath = $imagenCargada["tmp_name"];
+        $nombreOriginalImagen = basename($imagenCargada["name"]);
+
+        // Generar un nombre único para el archivo
+        $uniqueImagenNombre = uniqid() . '' . $nombreOriginalImagen;
+        $rutaDestino = $carpetaImagen . $uniqueImagenNombre;
+
+        // Mover el archivo temporal a la ubicación deseada
+        if (move_uploaded_file($tempFilePath, $rutaDestino)) {
+            $referencia_imagen = $uniqueImagenNombre;
+        } else {
+            echo "Error al mover el archivo a la carpeta de destino.";
+        }
+    } else {
+        echo "Error en la carga de la imagen. Código de error: " . $imagenCargada["error"];
+    }
+
+    $libro = new Libro(null, $titulo, $autor, $descripcion, $referencia_imagen, $fecha_publicacion, $categoria, $stock, 0, $precio);
+    database::cargarLibro($libro);
+}
+
 
 //fin seccion
 
