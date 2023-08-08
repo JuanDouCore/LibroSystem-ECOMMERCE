@@ -160,14 +160,21 @@
         
         <div class="divPhpAdminPrincipal">
             <h1 class="tituloAdminPhp">Panel de Administrador</h1>
+            <p>haga click en una opción</p>
         </div>
 
         <div class="divAdminFlexMain">
         <div class="divLinksPhpAdmin">
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Modificar usuarios</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Cargar Libro</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Cambiar stock libros</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>Index estadisticas</p></button>
+            <br>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>LISTAR USUARIOS</p></button>
+            <br>
+            <br>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/cargar_libro.php')"><p>DAR DE ALTA LIBRO</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/modificar_libro.php')"><p>MODIFICAR LIBRO</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/modificar_stock_libro.php')"><p>REPONER STOCK LIBRO</p></button>
+            <br><br>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/estadisticas.php')"><p>ESTADISTICAS DE LA TIENDA</p></button>
+            <br>
         </div>
         </div>
                 

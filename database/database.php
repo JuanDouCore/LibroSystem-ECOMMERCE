@@ -98,13 +98,64 @@ class database {
         $consulta = self::getQuery("select * from usuarios where id=" .$idUsuario. ";");
 
         if($lectura = mysqli_fetch_array($consulta)) {
-            $usuario = new Usuario($lectura['id'], $lectura['user'], $lectura['name'], $lectura['password'], $lectura['dni']);
+            $usuario = new Usuario($lectura['id'], $lectura['user'], $lectura['name'], $lectura['password'], $lectura['dni'], $lectura['rol']);
             return $usuario;
         }
 
         self::closeConnection();
     }
- 
+
+
+    public static function leerUsuarios($criterio) {
+
+        $usuarios = array();
+
+        switch($criterio) {
+            case "TODOS":
+                $consulta = self::getQuery("select * from usuarios;");
+
+                while($lectura = mysqli_fetch_array($consulta)) {
+                    $usuario = new Usuario($lectura['id'], $lectura['user'], $lectura['name'], $lectura['password'], $lectura['dni'], $lectura['rol']);
+                    $usuarios[] = $usuario;
+                }
+
+                break;
+            case "CLIENTES":
+                $consulta = self::getQuery("select * from usuarios where rol = 1;");
+
+                while($lectura = mysqli_fetch_array($consulta)) {
+                    $usuario = new Usuario($lectura['id'], $lectura['user'], $lectura['name'], $lectura['password'], $lectura['dni'], $lectura['rol']);
+                    $usuarios[] = $usuario;
+                }
+                
+                break;
+            case "EMPLEADOS":
+
+                $consulta = self::getQuery("select * from usuarios where rol = 2;");
+
+                while($lectura = mysqli_fetch_array($consulta)) {
+                    $usuario = new Usuario($lectura['id'], $lectura['user'], $lectura['name'], $lectura['password'], $lectura['dni'], $lectura['rol']);
+                    $usuarios[] = $usuario;
+                }
+                
+                break;
+        }
+
+        self::closeConnection();
+        return $usuarios;
+    }
+    
+    public static function cambiarRolUsuario($id, $rol) {
+        self::sendQuery("UPDATE usuarios SET rol = ".$rol." WHERE id = ".$id.";");
+
+        self::closeConnection();
+    }
+
+    public static function resetPasswordUsuario($id) {
+        self::sendQuery("UPDATE usuarios SET password = '123345' WHERE id = ".$id.";");
+
+        self::closeConnection();
+    }
 
 
     //consultas para libros

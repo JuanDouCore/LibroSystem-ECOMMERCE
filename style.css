@@ -314,15 +314,19 @@ footer{
     align-items: center;
 }
 .divEstadoPago{
+    padding: 10px;
     border: 2px solid black;
 }
 .divEstadoVenta{
+    padding: 10px;
     border: 2px solid black;
 }
 .costoTotalVenta{
+    padding: 8px;
     border: 2px solid black;
 }
 .datosEnvioVenta{
+    padding: 10px;
     border: 2px solid black;
 }
 
@@ -339,6 +343,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin-top: 40px;
 }
 
@@ -354,6 +359,8 @@ footer{
 }
 
 .buttonLinksAdminPhp{
+    background-color: lightgray;
+    padding: 8px;
     border: solid 2px aquamarine;
 }
 
@@ -365,14 +372,19 @@ footer{
 #seccionUsuariosPhp{
     width: 100%;
     height: 50px;
+    margin-bottom: 10px;
 }
 
 .divOpcionesUsuario{
     display: flex;
     margin-top: 40px;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.divOpcionesUsuario p {
+    margin-bottom: 1px;
 }
 
 .seccionMostrarUsuariosEspecificos{
@@ -383,13 +395,34 @@ footer{
     display: flex;
     justify-content: center;
 }
+
+.tablaMostrarUsuarios {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .tablaMostrarUsuarios table{
     border: 2px solid aquamarine;
-    padding: 1px;
+    padding: 50px;
 }
 
 .tablaMostrarUsuarios th{
     padding: 25px;
+}
+
+
+.tablaMostrarUsuarios td{
+    border: solid 1px lightgray;
+    padding: 5px;
+}
+
+.divBusquedaEmpleados {
+    display: none;
+}
+
+.divBusquedaClientes {
+    display: none;
 }
 
 

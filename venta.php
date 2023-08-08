@@ -6,7 +6,7 @@
         session_start();
     }
 
-    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || !isset($_SESSION['isEmpleoye'])) {
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || (!isset($_SESSION['isAdmin']) && !isset($_SESSION['isEmpleoye']) )) {
         $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de ventas";
         header("Location: index.php");
         exit();

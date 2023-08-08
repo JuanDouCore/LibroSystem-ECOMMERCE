@@ -1,3 +1,18 @@
+<?php 
+
+    require_once '../controllers/adminController.php';
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || !isset($_SESSION['isAdmin'])) {
+        $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de administracion";
+        header("Location: index.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +33,6 @@
             <ul>
 
             <?php 
-            session_start();
-
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '
                 <li><button onclick="redirigir(\'/librosystem/mi_account.php\')"><p>Mi cuenta</p>
@@ -147,25 +160,29 @@
     <section id="seccionUsuariosPhp">
 
     <div class="divOpcionesUsuario">
-        <form  action="">
-            Todos
-            <select name="" id="">
-            <option value="">asdsa</option>
-            <option value="">asdsa</option>
-            <option value="">asdsa</option>
+
+        <p>Listar por</p>
+            <select id="optionBusquedaUsuarios" onchange="changeBusquedaUsuarios()">
+                <option value="todos">Todos</option>
+                <option value="clientes">Solo clientes</option>
+                <option value="empleados">Solo empleados</option>
             </select>
 
-            <input type="sumbit">
-        </form>
     </div>
 
     </section>
 
     <section id="seccionMostrarUsuariosEspecificos">
-
+        <div class="divBusquedaAll" id="divBusquedaAll">
                 <div class="tablaMostrarUsuarios">
+                            <?php 
+                                if(isset($_SESSION['infoMessageUsersAdminPage'])) {
+                                    echo '<p style="color:green;"> '.$_SESSION['infoMessageUsersAdminPage'].' </p>';
+                                    unset($_SESSION['infoMessageUsersAdminPage']);
+                                } 
+                            ?>
 
-
+                            
                             <table>
                             <tr>
                                 <th>Nombre</th>
@@ -174,291 +191,57 @@
                                 <th>Contraseña</th>
                                 <th>Modificar</th>
                             </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
+                            <?php
+                            leerUsuarios("TODOS");
+                            ?>
 
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-                            
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>USUARIOASD</td>
-                                <td> <form action="">
-                                    <input type="submit">
-                                </form>
-                            </td>
-                            <td><form action="">
-                                <input type="submit">
-                            </form></td>
-                            </tr>
-                            
                             </table>
-                
                 </div>
+        </div>
 
-                
+        <div class="divBusquedaClientes" id="divBusquedaClientes">
+            <div class="tablaMostrarUsuarios">
+                            <table>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>DNI</th>
+                                <th>Tipo de Usuario</th>
+                                <th>Contraseña</th>
+                                <th>Modificar</th>
+                            </tr>
+
+                            <?php 
+                            leerUsuarios("CLIENTES");
+                            ?>
+
+                            </table>
+                </div>
+        </div>
+              
+        <div class="divBusquedaEmpleados" id="divBusquedaEmpleados">
+            <div class="tablaMostrarUsuarios">
+                            <table>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>DNI</th>
+                                <th>Tipo de Usuario</th>
+                                <th>Contraseña</th>
+                                <th>Modificar</th>
+                            </tr>
+
+                            <?php 
+                            leerUsuarios("EMPLEADOS");
+                            ?>
+
+                            </table>
+                </div>
+        </div>
     </section>
     
 
     <footer class="footerUsuariosPhp">Derechos reservados BookStytem®</footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 
     </body>
 
