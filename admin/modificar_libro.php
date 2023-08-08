@@ -1,3 +1,17 @@
+<?php 
+
+    require_once '../controllers/adminController.php';
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if(!isset($_SESSION['loggedin'])||  $_SESSION['loggedin'] != true || !isset($_SESSION['isAdmin'])) {
+        $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de administracion";
+        header("Location: index.php");
+        exit();
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,26 +164,96 @@
             
         
             <div class="cajaTituloId">
-                <form>
-                    <label for="title" style="font-size: 20px;">Título:</label>
-                    <input type="text" id="title" name="title" placeholder="Escribe un título">
+                <form method="post" action="../controllers/adminController.php">
+                    <label for="titulo" style="font-size: 20px;">Título:</label>
                     
-                
-
-
-                    <br>
-                    <label for="title" style="font-size: 20px;">Id:</label>
-                    <input type="text" id="tituloId" name="title" placeholder="Escribe el id del libro">
+                    <input type="text" id="titulo" name="titulo" placeholder="Escribe un título">
                     
-                    <br>
-                    <div class="cajaEnviarModificarLibro">
-                        <button style="font-size: 20px;"  type="button" >dsaasd</button>
-                    </div>
+                    <button name="cargarLibroAmodificar" style="font-size: 20px;"  type="submit" >dsaasd</button>
+                </form>
+
+                <form method="post" action="../controllers/adminController.php">
+                    <label for="titulo" style="font-size: 20px;">Id:</label>
+                    
+                    <input type="text" id="id" name="id" placeholder="Escribe el id del libro">
+                    
+                    <button name="cargarLibroAmodificar" style="font-size: 20px;"  type="submit" >dsaasd</button>
                 </form>
             </div>
             
             
             <div class="cajaInfoLibrosIDtit">
+                
+
+    
+                    <?php 
+                        if(isset ($_SESSION ['libroAmodificar'])){
+                            $libro = $_SESSION ['libroAmodificar']; 
+                            unset($_SESSION ['libroAmodificar']);
+                            echo '
+                            <div class="formularioCarga">
+                            <form action="../controllers/adminController.php" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="label-box">Titulo:</div>
+                                <div class="input-box">
+                                    <input  type="text" value="'.$libro->getTitulo().'" name="titulo" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-box">Autor:</div>
+                                <div class="input-box">
+                                    <input type="text" value="'.$libro->getAutor().'" name="autor" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-box">Categoria:</div>
+                                <div class="input-box">
+                                    <select name="categoria" id="categoria">
+                                        <option value="TERROR" '.($libro->getCategoria()=="TERROR"?"selected":"").' >Terror</option>
+                                        <option value="COMEDIA" '.($libro->getCategoria()=="COMEDIA"?"selected":"").'>Comedia</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-box">Descripcion:</div>
+                                <div class="input-box">
+                                <textarea name="descripcion" rows="5" required> '.$libro->getDescripcion().' </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-box">Fecha Publicacion:</div>
+                                <div class="input-box">
+                                    <input type="date" value="'.$libro->getFechaPublicacion().'"  name="fecha_publicacion" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-box">Portada:</div>
+                                <div class="input-box">
+                                    <input type="file" name="portada" accept="image/*" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label-box">Precio:</div>
+                                <div class="input-box">
+                                    <input type="number" min="1" value="'.$libro->getPrecio().'" name="precio" required>
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <button class ="botonform" type="submit" name="modificarLibro">Enviar</button>
+                            </div>
+                        </form>
+                            </div>';
+                        }
+                        else{
+                            echo 'No se leyo';
+                        }
+                        ?>
+                    
+                
+
+
+
                 
             </div>
         </div>
@@ -181,7 +265,7 @@
 
     <footer class="footer">Derechos reservados BookStytem ®</footer>
 
-<script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 
 </html>

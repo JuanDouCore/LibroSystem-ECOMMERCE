@@ -14,6 +14,28 @@ if(isset($_POST['resetpassword'])) {
     exit();
 }
 
+if(isset ($_POST['cargarLibroAmodificar'])){
+    if(isset ($_POST['titulo'])){
+        $titulo = $_POST['titulo'];
+        $libro = database::leerLibro(null,$titulo);
+        $_SESSION['libroAmodificar'] = $libro;
+
+        header("Location: ../admin/modificar_libro.php");
+        exit();
+    }
+    
+    if(isset ($_POST['id'])){
+        $id = $_POST['id'];
+        $libro = database::leerLibro($id,null);
+        $_SESSION['libroAmodificar'] = $libro;
+
+        header("Location: ../admin/modificar_libro.php");
+
+        exit();
+
+    }
+}
+
 if(isset($_POST['cambiarrol'])) {
     $id = $_POST['id'];
     $rol = $_POST['rol'];

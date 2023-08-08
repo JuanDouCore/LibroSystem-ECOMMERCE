@@ -174,7 +174,8 @@ class database {
         self::closeConnection();
     }
 
-    public static function leerLibro($id) {
+    public static function leerLibro($id = null, $titulo = null) {
+    if(isset ($id)  ){
         $consulta = self::getQuery("select * from libros where id=".$id.";");
 
         if($lectura = mysqli_fetch_array($consulta)) {
@@ -193,6 +194,29 @@ class database {
                 $lectura['precio']
             );
         }
+    }
+
+
+    if(isset ($titulo)  ){
+        $consulta = self::getQuery("select * from libros where titulo='".$titulo."';");
+
+        if($lectura = mysqli_fetch_array($consulta)) {
+            self::closeConnection();
+
+            return new Libro(
+                $lectura['id'],
+                $lectura['titulo'],
+                $lectura['autor'],
+                $lectura['descripcion'],
+                $lectura['referencia_imagen'],
+                $lectura['fecha_publicacion'],
+                $lectura['categoria'],
+                $lectura['stock'],
+                $lectura['vendidos'],
+                $lectura['precio']
+            );
+        }
+    }
     }
 
 

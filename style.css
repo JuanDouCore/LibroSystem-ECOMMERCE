@@ -489,7 +489,7 @@ input[type="number"], input[type="date"], select, textarea {
 
 #sectionModificarLibroPhp{
     width: 100%;
-    height:100vh;
+    height:1000px;
     background-color: blueviolet;
 }
 
@@ -502,26 +502,28 @@ input[type="number"], input[type="date"], select, textarea {
 
 .cajaTituloId{
     width: 60%;
-    height: 220px;
+    height: 100%;
     margin-top: 50px;
-    border: solid 2px blue;
-
+    border: solid 2px aquamarine;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    
 
 }
 
-.cajaTituloId label, .cajaTituloId input {
-    margin-bottom: 10px;
+.cajaTituloId label,form {
+    margin-top: 20px;
+}
+
+.cajaTituloId button{
+    margin-top: 12px;
+    margin-bottom: 20px;
 }
 
 
-#tituloId{
-    margin-left: 25px;
-}
+
 
 .cajaEnviarModificarLibro{
     display: flex;
@@ -533,9 +535,13 @@ input[type="number"], input[type="date"], select, textarea {
 
 .cajaInfoLibrosIDtit{
     width: 60%;
-    height: 600px;
-    border: solid 2px blue;
+    height: 700px;
+    border: solid 2px aquamarine;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
