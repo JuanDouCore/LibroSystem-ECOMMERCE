@@ -106,25 +106,27 @@ header{
     justify-content: center;
 }
 #seccionLibros{
-   background-color: aliceblue;
-   border-bottom: 1px grey solid;
-   border-right:5px grey solid ;
+    background-color: aliceblue;
+    border-bottom: 1px grey solid;
+    border-right:5px grey solid ;
 }
 
 
 
 footer{
-  background-color: aqua;
-  bottom: 0;
-  width: 100%;
-  height: 30px;
-  text-align: center;
+    background-color: aqua;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+
 }
 
-.footerUsuariosPhp{
+/* .footerUsuariosPhp{
     bottom: 0;
     position: absolute;
-}
+} */
 
 /* estilos para los modales de login-register */
 .login{
@@ -190,8 +192,6 @@ footer{
     height: 300px;
     object-fit: contain;
     padding: 10px;
-
- 
 }
 .divInfo{
     font-size: large;
@@ -263,7 +263,7 @@ footer{
 
 .seccionInfoEnvio{
     font-size: large;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -302,7 +302,7 @@ footer{
 }
 .seccionInfoVenta{
     font-size: large;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -482,3 +482,61 @@ input[type="number"], input[type="date"], select, textarea {
 }
 
 /* FIN PAGINA CARGAR LIBROS PHP   */
+
+
+
+/*  PAGINA MODIFICAR LIBRO PHP   */
+
+#sectionModificarLibroPhp{
+    width: 100%;
+    height:100vh;
+    background-color: blueviolet;
+}
+
+.flexPrincipalModificarLibrosPhp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cajaTituloId{
+    width: 60%;
+    height: 220px;
+    margin-top: 50px;
+    border: solid 2px blue;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cajaTituloId label, .cajaTituloId input {
+    margin-bottom: 10px;
+}
+
+
+#tituloId{
+    margin-left: 25px;
+}
+
+.cajaEnviarModificarLibro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.cajaInfoLibrosIDtit{
+    width: 60%;
+    height: 600px;
+    border: solid 2px blue;
+    margin-top: 20px;
+}
+
+
+/*  FIN PAGINA MODIFICAR LIBRO PHP   */
