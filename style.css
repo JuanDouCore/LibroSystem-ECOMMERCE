@@ -200,7 +200,88 @@ footer{
     width:50%;
     margin-left:50px;
 }
-.ArticlePrincipalCheckout{
+/* Estilos generales para la sección de checkout */
+.ArticlePrincipalCheckout {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px auto;
+    width: 75%;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Estilos para los divs de libro en el checkout */
+  .divLibroCheckOut {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    height: 120px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .divFotoCheckOut {
+    width: 15%;
+    padding-right: 10px;
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .divFotoCheckOut img {
+    width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+    padding: 5px;
+  }
+  
+  /* Estilos para la sección de información de envío */
+  .seccionInfoEnvio {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px auto;
+    width: 75%;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Estilos para los formularios de datos de envío y compra */
+  .datosDeEnvioForm {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .datosDeCompraForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .opcionMetodoEntrega {
+    margin-bottom: 15px;
+  }
+/*.ArticlePrincipalCheckout{
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 20px;
@@ -273,7 +354,69 @@ footer{
     flex-direction: column;
     background-color: aquamarine;
     align-items: center;
-}
+}*/
+.ArticlePrincipalVentas {
+    margin: 20px auto;
+    width: 75%;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilos para cada div de venta */
+  .divVenta {
+    background-color: #ffffff;
+    height: 100px;
+    width: 90%;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .seccionInfoVenta {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px auto;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Estilos para los divs de estado de pago y venta */
+  .divEstadoPago,
+  .divEstadoVenta,
+  .costoTotalVenta,
+  .datosEnvioVenta {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los divs de estado de pago y venta en hover */
+  .divEstadoPago:hover,
+  .divEstadoVenta:hover,
+  .costoTotalVenta:hover,
+  .datosEnvioVenta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+/*
 .ArticlePrincipalVentas{
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -328,7 +471,7 @@ footer{
 .datosEnvioVenta{
     padding: 10px;
     border: 2px solid black;
-}
+}*/
 
 
 
@@ -359,9 +502,13 @@ footer{
 }
 
 .buttonLinksAdminPhp{
-    background-color: lightgray;
-    padding: 8px;
-    border: solid 2px aquamarine;
+    margin-top: 2px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* FIN PAGINA INDEX ADMIN.PHP */
@@ -438,6 +585,7 @@ footer{
             height: 100%;
 }
 .formularioCarga {
+    margin-top: 45px;
     background-color: lightgray;
     border: solid 2px aquamarine;
     width: 100%;
@@ -466,7 +614,15 @@ footer{
     border-radius: 0 5px 5px 0;
 }
 input[type="text"], input[type="image"],
-input[type="number"], input[type="date"], select, textarea {
+input[type="number"], input[type="date"], input[type="password" i], textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: none;
+}
+
+.select-box{
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -490,7 +646,6 @@ input[type="number"], input[type="date"], select, textarea {
 #sectionModificarLibroPhp{
     width: 100%;
     height:1000px;
-    background-color: blueviolet;
 }
 
 .flexPrincipalModificarLibrosPhp{

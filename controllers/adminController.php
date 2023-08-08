@@ -18,7 +18,13 @@ if(isset ($_POST['cargarLibroAmodificar'])){
     if(isset ($_POST['titulo'])){
         $titulo = $_POST['titulo'];
         $libro = database::leerLibro(null,$titulo);
-        $_SESSION['libroAmodificar'] = $libro;
+
+        if($libro != null) {
+            $_SESSION['libroAmodificar'] = $libro;
+        } else {
+            $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con este titulo";
+        }
+        
 
         header("Location: ../admin/modificar_libro.php");
         exit();
@@ -27,7 +33,12 @@ if(isset ($_POST['cargarLibroAmodificar'])){
     if(isset ($_POST['id'])){
         $id = $_POST['id'];
         $libro = database::leerLibro($id,null);
-        $_SESSION['libroAmodificar'] = $libro;
+
+        if($libro != null) {
+            $_SESSION['libroAmodificar'] = $libro;
+        } else {
+            $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con esta ID";
+        }
 
         header("Location: ../admin/modificar_libro.php");
 
@@ -63,6 +74,12 @@ if(isset($_POST['cargarlibro'])){
         exit();
     }
 
+    if($precio <= 0 || $stock < 0) {
+        $_SESSION['errorCargaLibro'] = "El stock y el precio del libro deben ser positivos";
+        header("location: ../admin/cargar_libro.php");
+        exit();
+    }
+
     $carpetaImagen = "../images/"; // Cambia esto a la ruta de la carpeta donde deseas almacenar las imágenes
     $imagenCargada = $_FILES["portada"];
 
@@ -87,6 +104,10 @@ if(isset($_POST['cargarlibro'])){
 
     $libro = new Libro(null, $titulo, $autor, $descripcion, $referencia_imagen, $fecha_publicacion, $categoria, $stock, 0, $precio);
     database::cargarLibro($libro);
+
+    $_SESSION['confirmacionPaginaAdmin'] = "Libro cargado con exito";
+    header("location: ../admin.php");
+    exit();
 }
 
 

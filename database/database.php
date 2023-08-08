@@ -193,6 +193,8 @@ class database {
                 $lectura['vendidos'],
                 $lectura['precio']
             );
+        } else {
+            return null;
         }
     }
 
@@ -215,6 +217,8 @@ class database {
                 $lectura['vendidos'],
                 $lectura['precio']
             );
+        } else {
+            return null;
         }
     }
     }

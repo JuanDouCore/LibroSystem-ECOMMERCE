@@ -14,7 +14,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -162,7 +162,7 @@
     <div class="divOpcionesUsuario">
 
         <p>Listar por</p>
-            <select id="optionBusquedaUsuarios" onchange="changeBusquedaUsuarios()">
+            <select class="selectDiv" id="optionBusquedaUsuarios" onchange="changeBusquedaUsuarios()">
                 <option value="todos">Todos</option>
                 <option value="clientes">Solo clientes</option>
                 <option value="empleados">Solo empleados</option>

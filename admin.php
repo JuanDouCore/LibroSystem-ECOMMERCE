@@ -11,7 +11,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -161,6 +161,12 @@
         <div class="divPhpAdminPrincipal">
             <h1 class="tituloAdminPhp">Panel de Administrador</h1>
             <p>haga click en una opción</p>
+            <?php 
+            if(isset($_SESSION['confirmacionPaginaAdmin'])) {
+                echo '<br><p style="color:green;">'.$_SESSION['confirmacionPaginaAdmin'].'</p>';
+                unset($_SESSION['confirmacionPaginaAdmin']);
+            }
+            ?>
         </div>
 
         <div class="divAdminFlexMain">

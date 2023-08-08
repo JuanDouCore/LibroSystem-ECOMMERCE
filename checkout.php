@@ -24,7 +24,7 @@ if(!isset($_SESSION['carrito'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -226,7 +226,8 @@ if(!isset($_SESSION['carrito'])) {
                 <br><br>
                 <p>TOTAL $<?php calcularTotalCarrito()?></p>
 
-                <input type="submit" name="procesarCompra_Envio" value="CONFIRMAR">
+                <button class="botonform" type="submit" name="procesarCompra_Envio">Comprar</button>
+
         </form>
 
         <form id="datosDeCompraForm" class="datosDeCompraForm" method="post" action="./controllers/sellController.php">
@@ -246,7 +247,7 @@ if(!isset($_SESSION['carrito'])) {
                 <br><br>
                 <p>TOTAL $<?php calcularTotalCarrito()?></p>
 
-                <input type="submit" name="procesarCompra_Retiro" value="CONFIRMAR">
+                <button class="botonform" type="submit" name="procesarCompra_Retiro">Comprar</button>
         </form>
         <br><br>
     </section>

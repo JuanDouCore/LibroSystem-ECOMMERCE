@@ -4,7 +4,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -152,6 +152,14 @@
 
 
     <!--SECCION DE CATEGORIAS-LIBROS-->
+    <section id="seccionLibros">
+        <p class="tituloLibros">Ciencia Ficcion</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("CIENCIA FICCION");
+            ?>
+        </div>
+    </section>
 
     <section id="seccionLibros">
         <p class="tituloLibros">Terror</p>
@@ -162,7 +170,6 @@
         </div>
     </section>
 
-
     <section id="seccionLibros">
         <p class="tituloLibros">Comedia</p>
         <div class="divFlexLibros">
@@ -171,17 +178,126 @@
             ?>
         </div>
     </section>
-                
-
     <section id="seccionLibros">
-        <p class="tituloLibros">Ciencia Ficcion</p>
+        <p class="tituloLibros">Novela</p>
         <div class="divFlexLibros">
             <?php 
-            leerLibros("CIENCIA FICCION");
+            leerLibros("NOVELA");
             ?>
         </div>
     </section>
 
+    <section id="seccionLibros">
+        <p class="tituloLibros">Misterio y Suspenso</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("MISTERIO Y SUSPENSO");
+            ?>
+        </div>
+    </section>
+
+    <section id="seccionLibros">
+        <p class="tituloLibros">Fantasía</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("FANTASIA");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Romance</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("ROMANCE");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">No Ficción Narrativa</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("NO FICCION NARRATIVA");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Biografías y Memorias</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("BIOGRAFIAS Y MEMORIAS");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Autoayuda y Desarrollo Personal</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("AUTOAYUDA Y DESARROLLO PERSONAL");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Negocios y Finanzas</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("NEGOCIOS Y FINANZAS");
+            ?>
+        </div>
+    </section>
+
+
+    <section id="seccionLibros">
+        <p class="tituloLibros">Literatura Clásica</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("LITERATURA CLASICA");
+            ?>
+        </div>
+    </section>
+                
+
+    <section id="seccionLibros">
+        <p class="tituloLibros">Ciencia y Divulgación Cientifica</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("CIENCIA Y DIVULGACION CIENTIFICA");
+            ?>
+        </div>
+    </section>
+
+    <section id="seccionLibros">
+        <p class="tituloLibros">Historia</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("HISTORIA");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Poesía</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("POESIA");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Viajes y Aventuras</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("VIAJES Y AVENTURAS");
+            ?>
+        </div>
+    </section>
+    <section id="seccionLibros">
+        <p class="tituloLibros">Otros</p>
+        <div class="divFlexLibros">
+            <?php 
+            leerLibros("OTROS");
+            ?>
+        </div>
+    </section>
+  
     
     <footer>Derechos reservados BookStytem ®</footer>
 

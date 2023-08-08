@@ -14,7 +14,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +33,6 @@
             <ul>
 
             <?php 
-            session_start();
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '
@@ -165,32 +164,29 @@
         
             <div class="cajaTituloId">
                 <form method="post" action="../controllers/adminController.php">
-                    <label for="titulo" style="font-size: 20px;">Título:</label>
+                    <label for="titulo" style="font-size: 20px;">Título</label>
                     
-                    <input type="text" id="titulo" name="titulo" placeholder="Escribe un título">
+                    <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
                     
-                    <button name="cargarLibroAmodificar" style="font-size: 20px;"  type="submit" >dsaasd</button>
+                    <button name="cargarLibroAmodificar" class="botonform"  type="submit" >Buscar por titulo</button>
                 </form>
 
                 <form method="post" action="../controllers/adminController.php">
-                    <label for="titulo" style="font-size: 20px;">Id:</label>
+                    <label for="titulo" style="font-size: 20px;">Id</label>
                     
-                    <input type="text" id="id" name="id" placeholder="Escribe el id del libro">
+                    <input type="number" id="id" name="id" placeholder="Escribe el id del libro">
                     
-                    <button name="cargarLibroAmodificar" style="font-size: 20px;"  type="submit" >dsaasd</button>
+                    <button name="cargarLibroAmodificar" class="botonform"  type="submit" >Buscar por ID</button>
                 </form>
             </div>
-            
-            
-            <div class="cajaInfoLibrosIDtit">
-                
-
+        
     
                     <?php 
                         if(isset ($_SESSION ['libroAmodificar'])){
                             $libro = $_SESSION ['libroAmodificar']; 
                             unset($_SESSION ['libroAmodificar']);
                             echo '
+                            <div class="cajaInfoLibrosIDtit">
                             <div class="formularioCarga">
                             <form action="../controllers/adminController.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
@@ -208,9 +204,24 @@
                             <div class="form-group">
                                 <div class="label-box">Categoria:</div>
                                 <div class="input-box">
-                                    <select name="categoria" id="categoria">
-                                        <option value="TERROR" '.($libro->getCategoria()=="TERROR"?"selected":"").' >Terror</option>
+                                    <select class="select-box" name="categoria" id="categoria">
+                                        <option value="CIENCIA FICCION" '.($libro->getCategoria()=="CIENCIA FICCION"?"selected":"").'>Ciencia Ficcion</option>
+                                        <option value="TERROR" '.($libro->getCategoria()=="TERROR"?"selected":"").'>Terror</option>
                                         <option value="COMEDIA" '.($libro->getCategoria()=="COMEDIA"?"selected":"").'>Comedia</option>
+                                        <option value="NOVELA" '.($libro->getCategoria()=="NOVELA"?"selected":"").'>Novela</option>
+                                        <option value="MISTERIO Y SUSPENSO" '.($libro->getCategoria()=="MISTERIO Y SUSPENSO"?"selected":"").'>Misterio y Supenso</option>
+                                        <option value="FANTASIA" '.($libro->getCategoria()=="FANTASIA"?"selected":"").'>Fantasia</option>
+                                        <option value="ROMANCE" '.($libro->getCategoria()=="ROMANCE"?"selected":"").'>Romance</option>
+                                        <option value="NO FICCION NARRATIVA" '.($libro->getCategoria()=="NO FICCION NARRATIVA"?"selected":"").'>No Ficcion Narrativa</option>
+                                        <option value="BIOGRAFIAS Y MEMORIAS" '.($libro->getCategoria()=="BIOGRAFIAS Y MEMORIAS"?"selected":"").'>Biografias y Memorias</option>
+                                        <option value="AUTOAYUDA Y DESARROLLO PERSONAL" '.($libro->getCategoria()=="AUTOAYUDA Y DESARROLLO PERSONAL"?"selected":"").'>Autoayuda y Desarrollo Personal</option>
+                                        <option value="NEGOCIOS Y FINANZAS" '.($libro->getCategoria()=="NEGOCIOS Y FINANZAS"?"selected":"").'>Negocios y Finanzas</option>
+                                        <option value="LITERATURA CLASICA" '.($libro->getCategoria()=="LITERATURA CLASICA"?"selected":"").'>Literatura Clásica</option>
+                                        <option value="CIENCIA Y DIVULGACION CIENTIFICA" '.($libro->getCategoria()=="CIENCIA Y DIVULGACION CIENTIFICA"?"selected":"").'>Ciencia y Divulgación Cientifica</option>
+                                        <option value="HISTORIA" '.($libro->getCategoria()=="HISTORIA"?"selected":"").'>Historia</option>
+                                        <option value="POESIA" '.($libro->getCategoria()=="POESIA"?"selected":"").'>Poesia</option>
+                                        <option value="VIAJES Y AVENTURAS" '.($libro->getCategoria()=="VIAJES Y AVENTURAS"?"selected":"").'>Viajes y Aventuras</option>
+                                        <option value="OTROS" '.($libro->getCategoria()=="OTROS"?"selected":"").'>Otros</option>
                                     </select>
                                 </div>
                             </div>
@@ -240,28 +251,30 @@
                             </div>
     
                             <div class="form-group">
-                                <button class ="botonform" type="submit" name="modificarLibro">Enviar</button>
+                                <button class ="botonform" type="submit" name="modificarLibro">Modificar</button>
                             </div>
                         </form>
+                            </div>
                             </div>';
                         }
-                        else{
-                            echo 'No se leyo';
+
+                        if(isset($_SESSION['errorCargarLibroaModificar'])) {
+                            echo '
+                            <div class="cajaInfoLibrosIDtit">
+                            <p style="color:red;">'.$_SESSION['errorCargarLibroaModificar'].'</p>
+                            </div>
+                            ';
+
+                            unset($_SESSION['errorCargarLibroaModificar']);
                         }
+                        
                         ?>
-                    
-                
 
-
-
-                
-            </div>
         </div>
 
     </section>
 
-
-
+                
 
     <footer class="footer">Derechos reservados BookStytem ®</footer>
 
