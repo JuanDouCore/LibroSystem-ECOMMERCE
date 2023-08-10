@@ -7,7 +7,7 @@
     }
 
     if(!isset($_SESSION['loggedin'])||  $_SESSION['loggedin'] != true || !isset($_SESSION['isAdmin'])) {
-        $_SESSION['errorLogin'] = "No tienes autorizado acceder al panel de administracion";
+        $_SESSION['infoMainMessage'] = "No tienes autorizado acceder al panel de administracion";
         header("Location: index.php");
         exit();
     }
@@ -27,7 +27,7 @@
     <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     <header>
         <div class="divTit">
-            <h1 class="titPrincipal">Books system</h1>
+            <a href="/librosystem/index.php" class="tituloBoton">Books system</a>
         </div>
         <nav class="navBar">
             <ul>
@@ -104,9 +104,9 @@
 
             </ul>
             <?php 
-                if(isset($_SESSION['errorLogin'])) {
-                    echo '<p style="color:red;">'.$_SESSION['errorLogin'].'</p>';
-                    unset($_SESSION['errorLogin']);
+                if(isset($_SESSION['infoMainMessage'])) {
+                    echo '<p style="color:red;">'.$_SESSION['infoMainMessage'].'</p>';
+                    unset($_SESSION['infoMainMessage']);
                 }
             ?>
         </nav>
@@ -260,8 +260,12 @@
 
                         if(isset($_SESSION['errorCargarLibroaModificar'])) {
                             echo '
-                            <div class="cajaInfoLibrosIDtit">
-                            <p style="color:red;">'.$_SESSION['errorCargarLibroaModificar'].'</p>
+                            <div class="test-a">
+                                <div class="test-a-content">
+                                    <p>Aviso<p>
+                                    <p style="color: red;">'.$_SESSION['errorCargarLibroaModificar'].'</p>
+                                    <button class="cerrarModalButton" onclick="location.reload()">Cerrar</button>
+                                </div>
                             </div>
                             ';
 

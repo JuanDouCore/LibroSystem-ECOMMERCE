@@ -1,30 +1,3 @@
-/*LOGIN REGISTRER CUENTA CARRITO ADMIN EMPLEADO
-
-register <span class="material-symbols-outlined">
-how_to_reg
-</span>
-
-login <span class="material-symbols-outlined">
-login
-</span>entrada
-<span class="material-symbols-outlined">
-logout
-</span>salida
-
-cuenta <span class="material-symbols-outlined">
-account_circle
-</span>
-
-carrito <span class="material-symbols-outlined">
-shopping_cart
-</span>
-
-admin <span class="material-symbols-outlined">
-admin_panel_settings
-</span>
-
-emleado
-*/
 body{
     margin: 0;
 }
@@ -34,12 +7,88 @@ body{
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-button{
+/*button{
     background: transparent;
     border-color: aqua;
+}*/
+
+/* Header */
+header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: space-between;
+  background-color: #007bff; /* Cambio de color */
+  padding: 0 20px; /* Agregado de padding horizontal */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+.tituloBoton {
+  display: inline-block;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #333; /* Color de texto */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out; /* Transición de color al pasar el mouse */
 }
 
-header{
+.tituloBoton:hover {
+  color: white; /* Nuevo color al pasar el mouse */
+}
+/* Barra de navegación */
+.navBar {
+  display: flex;
+  align-items: center;
+}
+.navBar button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333; /* Color de texto */
+  transition: color 0.2s ease-in-out; /* Transición de color al pasar el mouse */
+}
+
+.navBar button:hover {
+  color: white; /* Color al pasar el mouse */
+}
+
+/* Estilos para los iconos dentro de los botones */
+.navBar button .material-symbols-outlined {
+  font-size: 24px;
+  margin-left: 5px;
+}
+.navBar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navBar ul li {
+  margin-right: 20px; /* Espaciado entre elementos */
+}
+
+.navBar ul li:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.navBar ul li a {
+  text-decoration: none;
+  color: white; /* Color del texto */
+  font-weight: bold;
+  transition: color 0.2s ease-in-out; /* Transición de color al pasar el mouse */
+}
+
+.navBar ul li a:hover {
+  color: #ffc107; /* Color al pasar el mouse */
+}
+
+/*header{
     width: 100%;
     height: 80px;
     display: flex;
@@ -59,7 +108,7 @@ header{
     display: inline;
     padding: 25px;
 
-}
+}*/
 #seccionLibros {
     background-color: #f5f8fa;
     border-bottom: 1px solid #ccc;
@@ -104,7 +153,7 @@ header{
   /* Título del libro */
   .tituloLibro {
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     margin-top: 10px;
   }
   
@@ -145,59 +194,78 @@ header{
     justify-content: center;
     margin-top: auto; /* Ajuste aquí para que el botón esté alineado en la parte inferior */
   }
-/*.divFlexLibros{
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    flex-wrap: wrap;
-}
-.divLibros{
-    background-color: aqua;
-    height: 325px;
-    width: 170px; 
-    margin: 20px;
-}
-.tituloLibros{
-    font-size: 70px;
-    text-align: center;
-}
 
-.tituloLibro{
-    text-align: center;
-}
-.divImgLibro{
-
+  footer {
+    background-color: #007bff;
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    height: 55%;
-    overflow: hidden;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
-.divImgLibro img{
+
+/* Login */
+.login {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
-.descripcionLibro{
-    text-align: center;
+
+.login-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Ajusta el ancho según tu diseño */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.precioLibro{
-    text-align: center;
-}
-.botonFlex{
+
+.loginForm {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
-#seccionLibros{
-    background-color: aliceblue;
-    border-bottom: 1px grey solid;
-    border-right:5px grey solid ;
-}*/
 
+/* Registro */
+.register {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+.register-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Ajusta el ancho según tu diseño */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
 
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*
 footer{
     background-color: aqua;
     position: fixed;
@@ -208,12 +276,7 @@ footer{
 
 }
 
-/* .footerUsuariosPhp{
-    bottom: 0;
-    position: absolute;
-} */
 
-/* estilos para los modales de login-register */
 .login{
     display: none;
     position: fixed;
@@ -295,31 +358,7 @@ footer{
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
-/*
-.flexInfoLibro{
-    display: flex;
-    flex-direction: row;
-    margin-left: 400px;
-    margin-top: 100px;
-}
 
-.divFoto{
-    width:15%;
-}
-.divFoto img{
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
-    padding: 10px;
-}
-.divInfo{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: gainsboro;
-    width:50%;
-    margin-left:50px;
-}
-/* Estilos generales para la sección de checkout */
 .ArticlePrincipalCheckout {
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -400,80 +439,7 @@ footer{
   .opcionMetodoEntrega {
     margin-bottom: 15px;
   }
-/*.ArticlePrincipalCheckout{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    height: 100%;
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.divLibroCheckOut{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: lightblue;
-    height: 100px;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 20px;
-}
 
-.divFotoCheckOut {
-    width: 8%;
-}
-.divFotoCheckOut img{
-    width: 100%;
-    height: 100px;
-    object-fit: contain;
-    padding: 3px;
-}
-
-
-.seccionInfoEnvio{
-    width: 100%;
-    height:500px ;
-    background-color: aqua;
-
-}
-
-.datosDeEnvioForm{
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
-
-.datosDeCompraForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.opcionMetodoEntrega{
-    margin-bottom: 10px;
-}
-
-.seccionInfoEnvio{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: aquamarine;
-    align-items: center;
-}*/
 .ArticlePrincipalVentas {
     margin: 20px auto;
     width: 75%;
@@ -535,68 +501,64 @@ footer{
     transform: translateY(-2px);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
-/*
-.ArticlePrincipalVentas{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    height: 100%;
-    background-color: aquamarine;
+
+  .divAdminFlexMain {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
 }
-.divVenta{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: lightblue;
-    height: 100px;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+
+/* Estilos para el contenedor del título principal */
+.divPhpAdminPrincipal {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tituloAdminPhp {
+    font-size: 36px;
+    color: #333;
     margin-bottom: 10px;
 }
-.seccionInfoVenta{
-    font-size: large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    height: 100%;
+
+.divPhpAdminPrincipal p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Estilos para el contenedor de los botones de opciones */
+.divLinksPhpAdmin {
     display: flex;
-    flex-direction: column;
-    background-color: aquamarine;
-    align-items: center;
+    flex-wrap: wrap;
+    width: 300px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.divEstadoPago{
-    padding: 10px;
-    border: 2px solid black;
+
+/* Estilos para los botones de opciones */
+.buttonLinksAdminPhp {
+    margin: 10px;
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
-.divEstadoVenta{
-    padding: 10px;
-    border: 2px solid black;
+
+.buttonLinksAdminPhp p {
+    font-size: 18px;
+    margin: 0;
 }
-.costoTotalVenta{
-    padding: 8px;
-    border: 2px solid black;
+
+.buttonLinksAdminPhp:hover {
+    background-color: #0056b3;
 }
-.datosEnvioVenta{
-    padding: 10px;
-    border: 2px solid black;
-}*/
-
-
-
-
-
-/* PAGINA INDEX ADMIN.PHP */
+/* PAGINA INDEX ADMIN.PHP 
 .divAdminFlexMain{
     display: flex;
     justify-content: center;
@@ -635,7 +597,89 @@ footer{
 
 /* PAGINA USUARIOS PHP */
 
-#seccionUsuariosPhp{
+#seccionUsuariosPhp {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.divOpcionesUsuario {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f8fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.divOpcionesUsuario p {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.seccionMostrarUsuariosEspecificos {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tablaMostrarUsuarios {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tablaMostrarUsuarios table {
+  border: 2px solid gray;
+  border-collapse: collapse; /* Evita el espacio entre las celdas */
+  width: 100%;
+  max-width: 800px; /* Ajusta el ancho máximo de la tabla según tu diseño */
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tablaMostrarUsuarios th,
+.tablaMostrarUsuarios td {
+  padding: 10px;
+  border: solid 1px lightgray;
+  white-space: normal; /* Vuelve a la configuración normal de salto de línea */
+}
+
+.tablaMostrarUsuarios th {
+  background-color: #f5f8fa;
+  border-bottom: 2px solid gray;
+}
+
+.tablaMostrarUsuarios td {
+  text-align: center; /* Alinea el contenido al centro de las celdas */
+}
+
+.tablaMostrarUsuarios td div {
+  max-width: 100%; /* Establece el ancho máximo para que el contenido no se corte */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es muy largo */
+  white-space: nowrap; /* Evita el salto de línea en el contenido */
+}
+
+
+
+/*#seccionUsuariosPhp{
     width: 100%;
     height: 50px;
     margin-bottom: 10px;
@@ -682,7 +726,7 @@ footer{
     border: solid 1px lightgray;
     padding: 5px;
 }
-
+*/
 .divBusquedaEmpleados {
     display: none;
 }
@@ -697,7 +741,80 @@ footer{
 
 /* PAGINA CARGAR LIBROS PHP */
 
-#seccionCargarLibroPhp{
+#seccionCargarLibroPhp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.formularioCarga {
+  margin-top: 45px;
+  background-color: #f5f5f5;
+  border: 2px solid #007bff;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.label-box {
+  width: 150px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px 0 0 5px;
+}
+
+.input-box {
+  flex: 1;
+  padding: 10px;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+input[type="text"],
+input[type="image"],
+input[type="number"],
+input[type="date"],
+input[type="password" i],
+textarea,
+.select-box {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  resize: none;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="image"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="password" i]:focus,
+textarea:focus,
+.select-box:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.select-box{
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/*#seccionCargarLibroPhp{
     display: flex;
             justify-content: center;
             align-items: center;
@@ -746,7 +863,7 @@ input[type="number"], input[type="date"], input[type="password" i], textarea {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-}
+}*/
 .botonform {
     padding: 10px 20px;
             background-color: #007bff;
@@ -756,12 +873,16 @@ input[type="number"], input[type="date"], input[type="password" i], textarea {
             cursor: pointer;
 }
 
+.botonform:hover{
+  background-color: #ccc;
+}
+
 /* FIN PAGINA CARGAR LIBROS PHP   */
 
 
 
 /*  PAGINA MODIFICAR LIBRO PHP   */
-
+/*
 #sectionModificarLibroPhp{
     width: 100%;
     height:1000px;
@@ -818,5 +939,292 @@ input[type="number"], input[type="date"], input[type="password" i], textarea {
     justify-content: center;
 }
 
+*/
+
+#sectionModificarLibroPhp {
+  width: 100%;
+  height: 1000px;
+}
+
+.flexPrincipalModificarLibrosPhp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cajaTituloId {
+  width: 60%;
+  margin-top: 50px;
+  border: 2px solid #007bff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.cajaTituloId label,
+.cajaTituloId form {
+  margin-top: 20px;
+}
+
+.cajaTituloId button {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cajaEnviarModificarLibro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cajaInfoLibrosIDtit {
+  width: 60%;
+  border: 2px solid #007bff;
+  margin-top: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f5f8fa;
+}
+
+
+.cajaBusquedaStock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  background-color: #f5f8fa;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cajaBusquedaStock p {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.cajaBusquedaStock form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.cajaBusquedaStock label {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.cajaBusquedaStock input[type="text"],
+.cajaBusquedaStock input[type="number"],
+.cajaBusquedaStock select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cajaBusquedaStock .input-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.cajaBusquedaStock button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.subCajaBusquedaSelect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  background-color: #f5f8fa;
+}
+
+.subCajaBusquedaSelect p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.formulariosSelect {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.formulariosSelect form {
+  margin-right: 20px; 
+}
+
+
+
+.subCajaBusquedaSelect label {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.subCajaBusquedaSelect select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.subCajaBusquedaSelect button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+.libroAReponerStock {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.libroAReponerStock-content {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.libroAReponerStock-datos {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.libroAReponerStock-datos p {
+  margin: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.libroAReponerStock-form {
+  text-align: center;
+}
+
+.libroAReponerStock-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.libroAReponerStock-form label {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.libroAReponerStock-form input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.libroAReponerStock-form button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.test-a {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.test-a-content {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cerrarModalButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #f7f7f7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.cerrarModalButton:hover{
+  background-color: #ccc
+}
 
 /*  FIN PAGINA MODIFICAR LIBRO PHP   */

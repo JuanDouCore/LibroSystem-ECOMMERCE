@@ -10,6 +10,9 @@ function closeModalLogin() {
 function closeModalRegister() {
     document.getElementById("register").style.display = "none";
 }
+function closeModalAviso() {
+    document.getElementById("test-a").style.display = "none";
+}
 function redirigir(pagina) {
     window.location.href = pagina;
 }
@@ -49,6 +52,7 @@ function changeMetodoEnvio() {
       formRetiro.style.display = "flex";
     }
   }
+
 
 
   

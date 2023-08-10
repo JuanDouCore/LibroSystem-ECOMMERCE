@@ -14,7 +14,7 @@ if(isset($_REQUEST['logout'])) {
 
 if(isset($_POST['login'])) {
     if($_POST['user'] === "" || $_POST['password'] === "") {
-        $_SESSION['errorLogin'] = "Por favor complete todos los campos";
+        $_SESSION['infoMainMessage'] = "Por favor complete todos los campos";
         header("Location: index.php");
         exit();
     }
@@ -35,7 +35,7 @@ if(isset($_POST['login'])) {
         if(database::checkIfEmpleoye($user)) $_SESSION['isEmpleoye'] = true;
 
     } else {
-        $_SESSION['errorLogin'] = "Usuario o contraseña incorrecto, verifique";
+        $_SESSION['infoMainMessage'] = "Usuario o contraseña incorrecto, verifique";
     }
 
     header("Location: index.php");
@@ -44,7 +44,7 @@ if(isset($_POST['login'])) {
 
 if(isset($_POST['register'])) {
     if($_POST['user'] === "" ||$_POST['name'] === ""||$_POST['password'] === ""||$_POST['DNI'] === "") {
-        $_SESSION['errorLogin'] = "Por favor complete todos los campos";
+        $_SESSION['infoMainMessage'] = "Por favor complete todos los campos";
         header("Location: index.php");
         exit();
     }
@@ -64,7 +64,7 @@ if(isset($_POST['register'])) {
 
         $_SESSION['loggedin'] = true;
     } else {
-        $_SESSION['errorLogin'] = "Ya existe alguien con estos datos";
+        $_SESSION['infoMainMessage'] = "Ya existe alguien con estos datos";
     }
 
     header("Location: index.php");

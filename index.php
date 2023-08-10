@@ -17,7 +17,7 @@
     <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     <header>
         <div class="divTit">
-            <h1 class="titPrincipal">Books system</h1>
+            <a href="/librosystem/index.php" class="tituloBoton">Books system</a>
         </div>
         <nav class="navBar">
             <ul>
@@ -94,12 +94,7 @@
 
 
             </ul>
-            <?php 
-                if(isset($_SESSION['errorLogin'])) {
-                    echo '<p style="color:red;">'.$_SESSION['errorLogin'].'</p>';
-                    unset($_SESSION['errorLogin']);
-                }
-            ?>
+
         </nav>
     </header>
 
@@ -147,8 +142,20 @@
         </div>
     </div>
     <!--FIN HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
-
-
+            <?php 
+                if(isset($_SESSION['infoMainMessage'])) {
+                    echo '
+                    <div class="test-a">
+                        <div class="test-a-content">
+                            <p>Aviso<p>
+                            <p style="color: red;">'.$_SESSION['infoMainMessage'].'</p>
+                            <button class="cerrarModalButton" onclick="location.reload()">Cerrar</button>
+                        </div>
+                    </div>
+                    ';
+                    unset($_SESSION['infoMainMessage']);
+                }
+            ?>
 
 
     <!--SECCION DE CATEGORIAS-LIBROS-->
@@ -299,7 +306,7 @@
     </section>
   
     
-    <footer>Derechos reservados BookStytem ®</footer>
+    <footer class="footer">Derechos reservados BookSystem ®<br>Made By: Nania, Ferrara, Carrizo, Retamar</footer>
 
     <script src="script.js"></script>
 </body>

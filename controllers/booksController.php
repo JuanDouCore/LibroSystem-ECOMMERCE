@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/../database/database.php';
 
+
     function leerLibros($categoria){
         $libros = database::leerLibrosDeCategoria($categoria);
         
