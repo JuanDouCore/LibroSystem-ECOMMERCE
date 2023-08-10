@@ -202,18 +202,18 @@ if(!isset($_SESSION['carrito'])) {
 
         <form id="datosDeEnvioForm" class="datosDeEnvioForm" method="post" action="./controllers/sellController.php">
                 Calle <br>
-                <input type="text" name="calle" id="calle">
+                <input type="text" name="calle" id="calle" required>
                 <br>Altura <br>
-                <input type="number" name="altura" id="altura">
+                <input type="number" name="altura" id="altura" required>
                 <br>Localidad<br>
-                <input type="text" name="localidad" id="localidad">
+                <input type="text" name="localidad" id="localidad" required>
                 <br>Provincia<br>
-                <input type="text"  name="provincia" id="provincia">
+                <input type="text"  name="provincia" id="provincia" required>
                 <br>
                 <br>
                 Metodo de pago
                 <label>
-                    <input type="radio" name="metodoPago" value="Efectivo">
+                    <input type="radio" name="metodoPago" value="Efectivo" checked>
                     Efectivo
                 </label>
                 <label>
@@ -234,7 +234,7 @@ if(!isset($_SESSION['carrito'])) {
                 <br>
                 Metodo de pago
                 <label>
-                    <input type="radio" name="metodoPago" value="Efectivo">
+                    <input type="radio" name="metodoPago" value="Efectivo" checked>
                     Efectivo
                 </label>
                 <label>

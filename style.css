@@ -465,6 +465,9 @@ footer{
     margin-bottom: 10px;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
+  .divVenta:hover{
+    transform: translateY(-5px);
+  }
   
   .seccionInfoVenta {
     font-size: large;
@@ -1189,6 +1192,71 @@ input[type="number"], input[type="date"], input[type="password" i], textarea {
   cursor: pointer;
   font-size: 14px;
 }
+
+
+#sectionEstadisticas {
+  background-color: #f8f8f8;
+  padding: 40px 0;
+}
+
+.flexPrincipalEstadisticas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.divStats-container {
+  display: flex;
+  gap: 20px;
+}
+.flexPrincipalEstadisticas p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.divStats-Libros,
+.divStats-Autores,
+.divStats-Categorias {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.divStats-Libros p,
+.divStats-Autores p,
+.divStats-Categorias p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.divStats-Libros ol,
+.divStats-Autores ol,
+.divStats-Categorias ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.divStats-Libros a,
+.divStats-Autores a,
+.divStats-Categorias a {
+  display: block;
+  text-decoration: none;
+  color: #007bff;
+  padding: 8px 0;
+  transition: color 0.3s;
+}
+
+.divStats-Libros a:hover,
+.divStats-Autores a:hover,
+.divStats-Categorias a:hover {
+  color: #0056b3;
+}
+
+
 
 
 .test-a {
