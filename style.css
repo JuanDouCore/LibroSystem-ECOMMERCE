@@ -346,8 +346,13 @@ footer{
     border: 1px solid #ccc; /* Agregado un borde alrededor de la imagen */
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
   
+  .divFoto img:hover{
+    transform: scale(1.05); /* Escala ligeramente más grande */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
   /* Contenedor de la información del libro */
   .divInfo {
     font-size: large;
@@ -1222,8 +1227,14 @@ input[type="number"], input[type="date"], input[type="password" i], textarea {
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.8s ease;
 }
-
+.divStats-Libros:hover,
+.divStats-Autores:hover,
+.divStats-Categorias:hover {
+  transform: scale(1.85); /* Escala ligeramente más grande */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligeramente más grande */
+}
 .divStats-Libros p,
 .divStats-Autores p,
 .divStats-Categorias p {
