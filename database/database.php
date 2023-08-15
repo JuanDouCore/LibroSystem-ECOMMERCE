@@ -298,7 +298,7 @@ class database {
         self::sendQuery("UPDATE libros SET titulo='" . $libro->getTitulo() . "', autor='"
          . $libro->getAutor() . "', descripcion='"
           . $libro->getDescripcion() . "', referencia_imagen='"
-           . $libro->getImagenSer() . "', fecha_publicacion='" 
+           . $libro->getImagenRuta() . "', fecha_publicacion='" 
              . $libro->getFechaPublicacion() . "', categoria='"
                 . $libro->getCategoria() . "', stock="
                    . $libro->getStock() . ", vendidos="

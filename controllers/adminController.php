@@ -3,6 +3,8 @@ require_once __DIR__.'/../database/database.php';
 
 session_start();
 
+
+
 //Comienzo de seccion para procesar POST's & GET's en el controlador
 if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")) {
     if(isset($_POST['resetpassword'])) {
@@ -14,6 +16,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")
         header("Location: ../admin/usuarios.php");
         exit();
     }
+
+    if(isset ($_POST['modificarLibro'])){
+        $titulo = $_POST['titulo'];
+        $autor = $_POST['autor'];
+        $categoria = $_POST['categoria'];
+        $descripcion = $_POST['descripcion'];
+        $fechaPublicacion = $_POST['fecha_publicacion'];
+        $precio = $_POST['precio'];
+        $id = $_POST['id'];
+
+        $libro = database:: leerLibro($id,null);
+
+        $libro -> setTitulo($titulo);
+        $libro -> setAutor($autor);
+        $libro -> setCategoria($categoria);
+        $libro -> setDescripcion($descripcion);
+        $libro -> setFechaPublicacion($fechaPublicacion);
+        $libro -> setPrecio($precio);
+
+
+        database::modificarLibro($libro);
+
+        $_SESSION ['confirmacionPaginaAdmin'] = "Se modifico el libro con exito";
+        header("location: ../admin.php");
+
+        exit();
+
+    }
+
+
+
 
     if(isset ($_POST['cargarLibroAmodificar'])){
         if(isset ($_POST['titulo'])){
@@ -32,6 +65,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")
         }
         
         if(isset ($_POST['id'])){
+
+            if($_POST['id']===""){
+                $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con esta ID";
+
+                header("Location: ../admin/modificar_libro.php");
+
+                exit();
+            }
             $id = $_POST['id'];
             $libro = database::leerLibro($id,null);
 
