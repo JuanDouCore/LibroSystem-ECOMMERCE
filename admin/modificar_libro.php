@@ -238,20 +238,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="label-box">Portada:</div>
-                                <div class="input-box">
-                                    <input type="file" name="portada" accept="image/*" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <div class="label-box">Precio:</div>
                                 <div class="input-box">
                                     <input type="number" min="1" value="'.$libro->getPrecio().'" name="precio" required>
                                 </div>
                             </div>
-    
+                            
+                            <input type="hidden" value="'.$libro->getId().'" name="id">
                             <div class="form-group">
-                                <button class ="botonform" type="submit" name="modificarLibro">Modificar</button>
+                                <button class ="botonform" type="submit" name="modificarLibro">Guardar</button>
                             </div>
                         </form>
                             </div>
