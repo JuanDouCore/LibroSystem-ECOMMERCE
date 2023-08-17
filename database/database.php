@@ -294,12 +294,36 @@ class database {
         return $libros;
     }
 
+    public static function getLibrosReponerStockCriterioEspecial($criterio) {
+        $libros = array();
+
+        switch ($criterio) {
+            case 'MAS VENDIDOS':
+                $consulta = self::getQuery("SELECT id FROM libros ORDER BY vendidos DESC LIMIT 10;");
+        
+                while($lectura = mysqli_fetch_array($consulta)) {
+                    $libros[] = $lectura['id'];
+                }
+                break;
+            case 'STOCK BAJO':
+                case 'MAS VENDIDOS':
+                    $consulta = self::getQuery("SELECT id FROM libros WHERE stock <= 5 ORDER BY stock LIMIT 10;");
+            
+                    while($lectura = mysqli_fetch_array($consulta)) {
+                        $libros[] = $lectura['id'];
+                    }
+                    break;
+                break;
+        }
+
+        return $libros;
+    }
 
     public static function getTop10LibrosVendidos() {
 
         $libros = array();
 
-        $consulta = self::getQuery("SELECT titulo, vendidos
+        $consulta = self::getQuery("SELECT id, titulo, vendidos
         FROM libros
         ORDER BY vendidos DESC
         LIMIT 10;

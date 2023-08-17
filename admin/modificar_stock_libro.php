@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
     <link rel="stylesheet" href="../style.css">
-    <title>Document</title>
+    <title>Administrador | Cargar Stock</title>
 </head>
 <body>
     <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
@@ -35,13 +35,7 @@
             <?php 
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-                echo '
-                <li><button onclick="redirigir(\'/librosystem/mi_account.php\')"><p>Mi cuenta</p>
-                    <span class="material-symbols-outlined">
-                        account_circle
-                        </span>
-                </button></li>
-                ';
+
 
                 echo '
                 <li><button onclick="redirigir(\'/librosystem/checkout.php\')"><p>Carrito</p>
@@ -180,7 +174,7 @@
                     
                     <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
                     
-                    <button name="cargarLibroAmodificar" class="botonform"  type="submit" >Buscar por titulo</button>
+                    <button name="cargarLibroAmodificarStock" class="botonform"  type="submit" >Buscar por titulo</button>
                 </form>
 
                 <form method="post" action="../controllers/adminController.php">
@@ -188,7 +182,7 @@
                     
                     <input type="number" id="id" name="id" placeholder="Escribe el id del libro">
                     
-                    <button name="cargarLibroAmodificar" class="botonform"  type="submit" >Buscar por ID</button>
+                    <button name="cargarLibroAmodificarStock" class="botonform"  type="submit" >Buscar por ID</button>
                 </form>
                 <br>
                 
@@ -201,43 +195,51 @@
                         <form method="post" action="../controllers/adminController.php">
                             <label for="masvendidos">mas vendidos</label>
                             <select name="masvendidos">
-                                <option>a</option>
+                                <?php leerLibrosParaReponerStockCriterioEspecial("MAS VENDIDOS")?>
                             </select>
-                            <button type="submit" name="cargarLibroAmodificar">Cargar</button>
+                            <button type="submit" name="cargarLibroAmodificarStock">Cargar</button>
                         </form>
                         <form method="post" action="../controllers/adminController.php">
                             <label for="stockbajo">con stock debajo del minimo</label>
                             <select name="stockbajo">
-                                <option>a</option>
+                                <?php leerLibrosParaReponerStockCriterioEspecial("STOCK BAJO")?>
                             </select>
-                            <button type="submit" name="cargarLibroAmodificar">Cargar</button>
+                            <button type="submit" name="cargarLibroAmodificarStock">Cargar</button>
                         </form>
                     </div>
                 </div>
 
             </div>
 
+            <?php 
+            if(isset($_SESSION['libroAmodificar'])) {
+                $libro = $_SESSION['libroAmodificar'];
+                unset($_SESSION['libroAmodificar']);
 
-            <div class="libroAReponerStock">
+                echo '
+                <div class="libroAReponerStock">
                 <div class="libroAReponerStock-content">
                     <div class="libroAReponerStock-datos">
-                        <p>El Señor de los Anillos</p>
-                        <p>Total vendidos: 10</p>
-                        <p>Unidades disponible: 0</p>
+                        <p>'.$libro->getTitulo().'</p>
+                        <p>Total vendidos: '.$libro->getVendidos().'</p>
+                        <p>Unidades disponible: '.$libro->getStock().'</p>
                     </div>
                     <div class="libroAReponerStock-form">
                         <form action="../controllers/booksController.php" method="post"> 
                             <label for="cantidad">Cantidad a reponer</label>
                             <input type="number" name="cantidad" id="cantidad" value="1" min="1">
-                            <input type="hidden" name="id" id="id" value="1">
+                            <input type="hidden" name="id" id="id" value="'.$libro->getId().'">
 
-                            <button type="submit">Reponer</button>
+                            <button type="submit" name="reponerStockLibro">Reponer</button>
                         </form>
                     </div>
+                    </div>
                 </div>
-            </div>
-        
+                ';
 
+            } 
+            ?>
+        
     </section>
 
 

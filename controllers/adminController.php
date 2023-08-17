@@ -46,6 +46,80 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")
     }
 
 
+    if(isset($_POST['cargarLibroAmodificarStock'])) {
+        if(isset ($_POST['titulo'])){
+            $titulo = $_POST['titulo'];
+            $libro = database::leerLibro(null,$titulo);
+
+            if($libro != null) {
+                $_SESSION['libroAmodificar'] = $libro;
+            } else {
+                $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con este titulo";
+            }
+            
+
+            header("Location: ../admin/modificar_stock_libro.php");
+            exit();
+        }
+        
+        if(isset ($_POST['id'])){
+
+            if($_POST['id']===""){
+                $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con esta ID";
+
+                header("Location: ../admin/modificar_stock_libro.php");
+                exit();
+            }
+
+            $id = $_POST['id'];
+            $libro = database::leerLibro($id,null);
+
+            if($libro != null) {
+                $_SESSION['libroAmodificar'] = $libro;
+            } else {
+                $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con esta ID";
+            }
+
+            header("Location: ../admin/modificar_stock_libro.php");
+
+            exit();
+
+        }
+
+        if(isset ($_POST['masvendidos'])){
+
+            $id = $_POST['masvendidos'];
+            $libro = database::leerLibro($id,null);
+
+            if($libro != null) {
+                $_SESSION['libroAmodificar'] = $libro;
+            } else {
+                $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con esta ID";
+            }
+
+            header("Location: ../admin/modificar_stock_libro.php");
+
+            exit();
+
+        }
+        
+        if(isset ($_POST['stockbajo'])){
+
+            $id = $_POST['stockbajo'];
+            $libro = database::leerLibro($id,null);
+
+            if($libro != null) {
+                $_SESSION['libroAmodificar'] = $libro;
+            } else {
+                $_SESSION['errorCargarLibroaModificar'] = "No existe un libro con esta ID";
+            }
+
+            header("Location: ../admin/modificar_stock_libro.php");
+
+            exit();
+
+        }
+    }
 
 
     if(isset ($_POST['cargarLibroAmodificar'])){
@@ -94,7 +168,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")
         $rol = $_POST['rol'];
 
         database::cambiarRolUsuario($id, $rol);
-        $_SESSION['infoMessageUsersAdminPage'] = "El usuario ahora tiene el rol de ". ($rol == 1 ? "CLIENTE" : "EMPLEADO");
+        $_SESSION['infoMessageUsersAdminPage'] = "El usuario ahora tiene el rol de ". ($rol == 3 ? "ADMIN" : "CLIENTE");
 
         header("Location: ../admin/usuarios.php");
         exit();
@@ -153,12 +227,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")
     }
 }
 
-//fin seccion
+
 
 function leerUsuarios($tipo) {
     $usuarios = database::leerUsuarios($tipo);
 
     foreach($usuarios as $usuario) {
+        $variableParaAdmin = "";
+        if($usuario->getRol() == 3) {
+
+        }
+
         echo '
         <tr>
         <td>'.$usuario->getName().'</td>
@@ -168,17 +247,32 @@ function leerUsuarios($tipo) {
             <input type="hidden" name="id" value="'.$usuario->getId().'">
             <input type="submit" name="resetpassword" id="resetpassword" value="RESET PASSWORD">
         </form>
-        </td>
-        <td><form action="../controllers/adminController.php" method="POST">
+        <form action="../controllers/adminController.php" method="POST">
                 <input type="hidden" name="id" value="'.$usuario->getId().'">
                 <input type="hidden" name="rol" value="'.($usuario->getRol() == 1 ? 2 : 1).'">
                 <input type="submit" name="cambiarrol" id="cambiarrol" value="CONVERTIR EN '.($usuario->getRol() == 1 ? "EMPLEADO":"CLIENTE").'">
             </form>
+        <form action="../controllers/adminController.php" method="POST">
+            <input type="hidden" name="id" value="'.$usuario->getId().'">
+            <input type="hidden" name="rol" value="'.($usuario->getRol() == 3 ? 1 : 3).'">
+            <input type="submit" name="cambiarrol" id="cambiarrol" value="'.($usuario->getRol() == 3 ? "REMOVER ADMIN":"AGREGAR ADMIN").'">
+        </form>
         </td>
         </tr>
         ';
     }
 }
 
+function leerLibrosParaReponerStockCriterioEspecial($criterio) {
+    $libros = database::getLibrosReponerStockCriterioEspecial($criterio);
+
+    $posicion = 1;
+    foreach($libros as $id) {
+        $libro = database::leerLibro($id, null);
+
+        echo '<option value="'.$libro->getId().'">#'.$posicion.' - '.$libro->getTitulo().'</option>';
+        $posicion++;
+    }
+}
 
 ?>

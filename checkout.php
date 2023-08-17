@@ -31,7 +31,7 @@ if(!isset($_SESSION['carrito'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Carrito</title>
 </head>
 <body>
     <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
@@ -45,13 +45,7 @@ if(!isset($_SESSION['carrito'])) {
             <?php 
 
             if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-                echo '
-                <li><button onclick="redirigir(\'/librosystem/mi_account.php\')"><p>Mi cuenta</p>
-                    <span class="material-symbols-outlined">
-                        account_circle
-                        </span>
-                </button></li>
-                ';
+
 
                 echo '
                 <li><button onclick="redirigir(\'/librosystem/checkout.php\')"><p>Carrito</p>

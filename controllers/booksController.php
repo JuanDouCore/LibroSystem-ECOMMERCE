@@ -1,7 +1,22 @@
 <?php 
 
+
+session_start();
 require_once __DIR__.'/../database/database.php';
 
+if($_SERVER["REQUEST_METHOD"] == "POST" || ($_SERVER["REQUEST_METHOD"] == "GET")) {
+    if(isset($_POST['reponerStockLibro'])) {
+        $id = $_POST['id'];
+        $cantidad = $_POST['cantidad'];
+
+        database::agregarStockLibro($id, $cantidad);
+
+        $_SESSION['confirmacionPaginaAdmin'] = "Se repuso el stock del libro con exito";
+        header("Location: ../admin.php");
+        exit();
+
+    }
+}
 
     function leerLibros($categoria){
         $libros = database::leerLibrosDeCategoria($categoria);
