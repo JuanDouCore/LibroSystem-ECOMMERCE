@@ -342,7 +342,7 @@ class database {
         ");
 
         while($lectura = mysqli_fetch_array($consulta)) {
-            $libros[] = $lectura['autor'] . " - " . $lectura['total_vendidos'] . " vendidos.";
+            $libros[] = $lectura['categoria'] . " - " . $lectura['total_vendidos'] . " vendidos.";
         }
 
         return $libros;

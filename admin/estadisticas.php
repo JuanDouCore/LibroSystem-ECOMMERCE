@@ -1,6 +1,7 @@
 <?php 
 
     require_once '../controllers/adminController.php';
+    require_once '../controllers/statisticsController.php';
 
     if (!isset($_SESSION)) {
         session_start();
@@ -175,25 +176,25 @@
                 <div class="divStats-Libros">
                     <p>Libros más vendidos</p>
                     <ol>
-                        <li><a href="#">Libro 1</a></li>
-                        <li><a href="#">Libro 2</a></li>
-                        <li><a href="#">Libro 3</a></li>
+                    <?php
+                    calcularEstadisticas('libros');
+                    ?> 
                     </ol>
                 </div>
                 <div class="divStats-Autores">
                     <p>Autores más vendidos</p>
                     <ol>
-                        <li><a href="#">Autor 1</a></li>
-                        <li><a href="#">Autor 2</a></li>
-                        <li><a href="#">Autor 3</a></li>
+                    <?php
+                    calcularEstadisticas('autores');
+                    ?> 
                     </ol>
                 </div>
                 <div class="divStats-Categorias">
                     <p>Categorias más vendidas</p>
                     <ol>
-                        <li><a href="#">Categorias 1</a></li>
-                        <li><a href="#">Categorias 2</a></li>
-                        <li><a href="#">Categorias 3</a></li>
+                    <?php
+                    calcularEstadisticas('categorias');
+                    ?> 
                     </ol>
                 </div>
             </div>
