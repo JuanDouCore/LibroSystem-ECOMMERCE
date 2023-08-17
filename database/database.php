@@ -294,6 +294,60 @@ class database {
         return $libros;
     }
 
+
+    public static function getTop10LibrosVendidos() {
+
+        $libros = array();
+
+        $consulta = self::getQuery("SELECT titulo, vendidos
+        FROM libros
+        ORDER BY vendidos DESC
+        LIMIT 10;
+        ");
+
+        while($lectura = mysqli_fetch_array($consulta)) {
+            $libros[] = $lectura['titulo'] . " - " . $lectura['vendidos'] . " vendidos.";
+        }
+
+        return $libros;
+    }
+
+    public static function getTop10Autores() {
+
+        $libros = array();
+
+        $consulta = self::getQuery("SELECT autor, SUM(vendidos) AS total_vendidos
+        FROM libros
+        GROUP BY autor
+        ORDER BY total_vendidos DESC
+        LIMIT 10;
+        ");
+
+        while($lectura = mysqli_fetch_array($consulta)) {
+            $libros[] = $lectura['autor'] . " - " . $lectura['total_vendidos'] . " vendidos.";
+        }
+
+        return $libros;
+    }
+
+    public static function getTop10Categorias() {
+
+        $libros = array();
+
+        $consulta = self::getQuery("SELECT categoria, SUM(vendidos) AS total_vendidos
+        FROM libros
+        GROUP BY categoria
+        ORDER BY total_vendidos DESC
+        LIMIT 10;
+        ");
+
+        while($lectura = mysqli_fetch_array($consulta)) {
+            $libros[] = $lectura['autor'] . " - " . $lectura['total_vendidos'] . " vendidos.";
+        }
+
+        return $libros;
+    }
+    
     public static function modificarLibro($libro) {
         self::sendQuery("UPDATE libros SET titulo='" . $libro->getTitulo() . "', autor='"
          . $libro->getAutor() . "', descripcion='"
