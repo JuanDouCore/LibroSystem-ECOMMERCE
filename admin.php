@@ -25,7 +25,7 @@
 <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
 <header>
         <div class="divTit">
-            <a href="/librosystem/index.php" class="tituloBoton">Books system</a>
+            <a href="/index.php" class="tituloBoton">Books system</a>
         </div>
         <nav class="navBar">
             <ul>
@@ -37,7 +37,7 @@
 
 
                 echo '
-                <li><button onclick="redirigir(\'/librosystem/checkout.php\')"><p>Carrito</p>
+                <li><button onclick="redirigir(\'/checkout.php\')"><p>Carrito</p>
                     <span class="material-symbols-outlined">
                         shopping_cart
                         </span>
@@ -48,7 +48,7 @@
                 if(isset($_SESSION['isAdmin'])) {
                     echo '
                     <li>
-                    <button onclick="redirigir(\'/librosystem/admin.php\')"> <p>Administrador</p>
+                    <button onclick="redirigir(\'/admin.php\')"> <p>Administrador</p>
                         <span class="material-symbols-outlined">
                             admin_panel_settings
                             </span>
@@ -59,7 +59,7 @@
 
                 if(isset($_SESSION['isAdmin']) || isset($_SESSION['isEmpleoye'])) {
                     echo '
-                    <li><button onclick="redirigir(\'/librosystem/ventas.php\')"><p>Ventas</p>
+                    <li><button onclick="redirigir(\'/ventas.php\')"><p>Ventas</p>
                     <span class="material-symbols-outlined">
                     sell
                     </span>
@@ -68,7 +68,7 @@
                 }
 
                 echo '
-                <li><button onclick="redirigir(\'/librosystem/session.php?logout=\')"><p>Cerrar Sesion</p>
+                <li><button onclick="redirigir(\'/session.php?logout=\')"><p>Cerrar Sesion</p>
                     <span class="material-symbols-outlined">
                         logout
                         </span>
@@ -174,15 +174,15 @@
         <div class="divAdminFlexMain">
         <div class="divLinksPhpAdmin">
             <br>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/usuarios.php')"><p>LISTAR USUARIOS</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/admin/usuarios.php')"><p>LISTAR USUARIOS</p></button>
             <br>
             <br>
             <br>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/cargar_libro.php')"><p>DAR DE ALTA LIBRO</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/modificar_libro.php')"><p>MODIFICAR LIBRO</p></button>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/modificar_stock_libro.php')"><p>REPONER STOCK LIBRO</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/admin/cargar_libro.php')"><p>DAR DE ALTA LIBRO</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/admin/modificar_libro.php')"><p>MODIFICAR LIBRO</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/admin/modificar_stock_libro.php')"><p>REPONER STOCK LIBRO</p></button>
             <br><br>
-            <button class="buttonLinksAdminPhp" onclick="redirigir('/librosystem/admin/estadisticas.php')"><p>ESTADISTICAS DE LA TIENDA</p></button>
+            <button class="buttonLinksAdminPhp" onclick="redirigir('/admin/estadisticas.php')"><p>ESTADISTICAS DE LA TIENDA</p></button>
             <br>
         </div>
         </div>

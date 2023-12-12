@@ -211,7 +211,7 @@ function cargarLibrosCarrito() {
         <div class="divLibroCheckOut">
             
         <div class="divFotoCheckOut">
-            <img src="/librosystem/images/'.$imagen.'" alt="img libro" >
+            <img src="/images/'.$imagen.'" alt="img libro" >
         </div>
         <div>
             <p>'.$titulo.'</p>

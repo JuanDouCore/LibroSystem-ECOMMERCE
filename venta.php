@@ -32,7 +32,7 @@
     <!--INICIO HEADER OBLIGATORIO EN TODAS LAS PAGINAS-->
     <header>
         <div class="divTit">
-            <a href="/librosystem/index.php" class="tituloBoton">Books system</a>
+            <a href="/index.php" class="tituloBoton">Books system</a>
         </div>
         <nav class="navBar">
             <ul>
@@ -43,7 +43,7 @@
 
 
                 echo '
-                <li><button onclick="redirigir(\'/librosystem/checkout.php\')"><p>Carrito</p>
+                <li><button onclick="redirigir(\'/checkout.php\')"><p>Carrito</p>
                     <span class="material-symbols-outlined">
                         shopping_cart
                         </span>
@@ -54,7 +54,7 @@
                 if(isset($_SESSION['isAdmin'])) {
                     echo '
                     <li>
-                    <button onclick="redirigir(\'/librosystem/admin.php\')"> <p>Administrador</p>
+                    <button onclick="redirigir(\'/admin.php\')"> <p>Administrador</p>
                         <span class="material-symbols-outlined">
                             admin_panel_settings
                             </span>
@@ -65,7 +65,7 @@
 
                 if(isset($_SESSION['isAdmin']) || isset($_SESSION['isEmpleoye'])) {
                     echo '
-                    <li><button onclick="redirigir(\'/librosystem/ventas.php\')"><p>Ventas</p>
+                    <li><button onclick="redirigir(\'/ventas.php\')"><p>Ventas</p>
                     <span class="material-symbols-outlined">
                     sell
                     </span>
@@ -74,7 +74,7 @@
                 }
 
                 echo '
-                <li><button onclick="redirigir(\'/librosystem/session.php?logout=\')"><p>Cerrar Sesion</p>
+                <li><button onclick="redirigir(\'/session.php?logout=\')"><p>Cerrar Sesion</p>
                     <span class="material-symbols-outlined">
                         logout
                         </span>
